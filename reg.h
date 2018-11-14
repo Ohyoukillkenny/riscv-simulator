@@ -30,7 +30,6 @@ public:
     const size_t PC = 32;
 
     reg();
-    reg(uint32_t); // init with pc
 
     uint32_t get_reg(uint8_t);
     uint16_t get_reg_high(uint8_t);

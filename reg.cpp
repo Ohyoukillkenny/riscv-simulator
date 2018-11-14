@@ -7,19 +7,9 @@
 
 reg::reg() {
     regs[0] = 0;
-    regs[PC] = 0;
+    regs[PC] = 0; // PC is default set to be 0
 }
 
-reg::reg(uint32_t pc) {
-    regs[0] = 0;
-    if (pc & (uint32_t) 3){
-        regs[PC] = pc;
-    }
-    else{
-        std::cout << "Reg: the last two bits of init pc are not 00" << std::endl;
-        regs[PC] = 0;
-    }
-}
 
 uint32_t reg::get_reg(uint8_t addr){
     if (addr > 32){

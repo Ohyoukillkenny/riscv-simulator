@@ -26,12 +26,6 @@ alu.h
 reg.h
 /Users/klk/CLionProjects/riscv-simulator/reg.h
 
-/Users/klk/CLionProjects/riscv-simulator/reg.cpp
-iostream
--
-reg.h
-/Users/klk/CLionProjects/riscv-simulator/reg.h
-
 /Users/klk/CLionProjects/riscv-simulator/reg.h
 cstdint
 -
