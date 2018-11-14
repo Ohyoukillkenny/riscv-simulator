@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/klk/CLionProjects/riscv-simulator/alu.h
+iostream
+-
+
+/Users/klk/CLionProjects/riscv-simulator/main.cpp
+iostream
+-
+climits
+-
+fstream
+-
+vector
+-
+queue
+-
+alu.h
+/Users/klk/CLionProjects/riscv-simulator/alu.h
+reg.h
+/Users/klk/CLionProjects/riscv-simulator/reg.h
+
+/Users/klk/CLionProjects/riscv-simulator/reg.cpp
+iostream
+-
+reg.h
+/Users/klk/CLionProjects/riscv-simulator/reg.h
+
+/Users/klk/CLionProjects/riscv-simulator/reg.h
+cstdint
+-
+vector
+-
+

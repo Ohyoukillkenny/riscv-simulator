@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/TestALU.dir/test/test-alu.cpp.o CMakeFiles/TestALU.dir/alu.cpp.o CMakeFiles/TestALU.dir/reg.cpp.o CMakeFiles/TestALU.dir/ctr.cpp.o  -o TestALU -lgtest_main -lgtest 
