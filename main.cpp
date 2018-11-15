@@ -5,6 +5,28 @@
 #include <queue>
 #include "alu.h"
 #include "reg.h"
+#include "cpu.h"
+
+uint8_t get_func3(uint32_t instr) {
+    uint32_t ret;
+    ret = (instr & 0b00000000000000000111000000000000) >> 12;
+    return (uint8_t) ret;
+}
+
+uint8_t get_alu_op(uint32_t instr) {
+    uint8_t func3 = get_func3(instr);
+    std::bitset<8> a(func3);
+    std::cout << "func3:" << a << "\n";
+    uint8_t bit30 = (instr & 0x40000000) >> 30;
+    std::bitset<8> y(bit30);
+    std::cout << "bit30:" << y << "\n";
+    if (bit30 == 1){
+        return (func3 | 0b00001000);
+    } else{
+        return func3;
+    }
+}
+
 
 int main() {
     int code_size = 1024;
@@ -23,16 +45,16 @@ int main() {
     code_region[2] = 0b00000010;  // PC 0b010
     code_region[3] = 0b10010011;  // PC 0b011
 
-    code_region[4] = 0b00000000;
 
-    uint8_t *ptr = code_region + 1;
+    cpu *instance = new cpu(code_region);
+//    instance->run();
+//    instance -> print();
 
 
-    uint32_t out =  0;
-    out = out | ptr[3];
-    out = out | ptr[2] << 8;
-    out = out | ptr[1] << 16;
-    out = out | ptr[0] << 24;
+
+    uint32_t instr = 0b01000000101010011101100100110011;
+
+    uint32_t out = instr;
 
     std::cout << (int)out << std::endl;
     std::bitset<32> y(out);

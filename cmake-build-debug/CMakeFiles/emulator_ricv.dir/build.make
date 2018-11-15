@@ -96,25 +96,39 @@ CMakeFiles/emulator_ricv.dir/reg.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/emulator_ricv.dir/reg.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/reg.cpp -o CMakeFiles/emulator_ricv.dir/reg.cpp.s
 
-CMakeFiles/emulator_ricv.dir/ctr.cpp.o: CMakeFiles/emulator_ricv.dir/flags.make
-CMakeFiles/emulator_ricv.dir/ctr.cpp.o: ../ctr.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/emulator_ricv.dir/ctr.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/emulator_ricv.dir/ctr.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/ctr.cpp
+CMakeFiles/emulator_ricv.dir/cpu.cpp.o: CMakeFiles/emulator_ricv.dir/flags.make
+CMakeFiles/emulator_ricv.dir/cpu.cpp.o: ../cpu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/emulator_ricv.dir/cpu.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/emulator_ricv.dir/cpu.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/cpu.cpp
 
-CMakeFiles/emulator_ricv.dir/ctr.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/emulator_ricv.dir/ctr.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/ctr.cpp > CMakeFiles/emulator_ricv.dir/ctr.cpp.i
+CMakeFiles/emulator_ricv.dir/cpu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/emulator_ricv.dir/cpu.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/cpu.cpp > CMakeFiles/emulator_ricv.dir/cpu.cpp.i
 
-CMakeFiles/emulator_ricv.dir/ctr.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/emulator_ricv.dir/ctr.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/ctr.cpp -o CMakeFiles/emulator_ricv.dir/ctr.cpp.s
+CMakeFiles/emulator_ricv.dir/cpu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/emulator_ricv.dir/cpu.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/cpu.cpp -o CMakeFiles/emulator_ricv.dir/cpu.cpp.s
+
+CMakeFiles/emulator_ricv.dir/mem.cpp.o: CMakeFiles/emulator_ricv.dir/flags.make
+CMakeFiles/emulator_ricv.dir/mem.cpp.o: ../mem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/emulator_ricv.dir/mem.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/emulator_ricv.dir/mem.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/mem.cpp
+
+CMakeFiles/emulator_ricv.dir/mem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/emulator_ricv.dir/mem.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/mem.cpp > CMakeFiles/emulator_ricv.dir/mem.cpp.i
+
+CMakeFiles/emulator_ricv.dir/mem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/emulator_ricv.dir/mem.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/mem.cpp -o CMakeFiles/emulator_ricv.dir/mem.cpp.s
 
 # Object files for target emulator_ricv
 emulator_ricv_OBJECTS = \
 "CMakeFiles/emulator_ricv.dir/main.cpp.o" \
 "CMakeFiles/emulator_ricv.dir/alu.cpp.o" \
 "CMakeFiles/emulator_ricv.dir/reg.cpp.o" \
-"CMakeFiles/emulator_ricv.dir/ctr.cpp.o"
+"CMakeFiles/emulator_ricv.dir/cpu.cpp.o" \
+"CMakeFiles/emulator_ricv.dir/mem.cpp.o"
 
 # External object files for target emulator_ricv
 emulator_ricv_EXTERNAL_OBJECTS =
@@ -122,10 +136,11 @@ emulator_ricv_EXTERNAL_OBJECTS =
 emulator_ricv: CMakeFiles/emulator_ricv.dir/main.cpp.o
 emulator_ricv: CMakeFiles/emulator_ricv.dir/alu.cpp.o
 emulator_ricv: CMakeFiles/emulator_ricv.dir/reg.cpp.o
-emulator_ricv: CMakeFiles/emulator_ricv.dir/ctr.cpp.o
+emulator_ricv: CMakeFiles/emulator_ricv.dir/cpu.cpp.o
+emulator_ricv: CMakeFiles/emulator_ricv.dir/mem.cpp.o
 emulator_ricv: CMakeFiles/emulator_ricv.dir/build.make
 emulator_ricv: CMakeFiles/emulator_ricv.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable emulator_ricv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable emulator_ricv"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/emulator_ricv.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

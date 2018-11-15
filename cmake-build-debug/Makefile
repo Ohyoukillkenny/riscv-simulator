@@ -166,35 +166,35 @@ alu.cpp.s:
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/alu.cpp.s
 .PHONY : alu.cpp.s
 
-ctr.o: ctr.cpp.o
+cpu.o: cpu.cpp.o
 
-.PHONY : ctr.o
+.PHONY : cpu.o
 
 # target to build an object file
-ctr.cpp.o:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/ctr.cpp.o
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/ctr.cpp.o
-.PHONY : ctr.cpp.o
+cpu.cpp.o:
+	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/cpu.cpp.o
+	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/cpu.cpp.o
+.PHONY : cpu.cpp.o
 
-ctr.i: ctr.cpp.i
+cpu.i: cpu.cpp.i
 
-.PHONY : ctr.i
+.PHONY : cpu.i
 
 # target to preprocess a source file
-ctr.cpp.i:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/ctr.cpp.i
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/ctr.cpp.i
-.PHONY : ctr.cpp.i
+cpu.cpp.i:
+	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/cpu.cpp.i
+	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/cpu.cpp.i
+.PHONY : cpu.cpp.i
 
-ctr.s: ctr.cpp.s
+cpu.s: cpu.cpp.s
 
-.PHONY : ctr.s
+.PHONY : cpu.s
 
 # target to generate assembly for a file
-ctr.cpp.s:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/ctr.cpp.s
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/ctr.cpp.s
-.PHONY : ctr.cpp.s
+cpu.cpp.s:
+	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/cpu.cpp.s
+	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/cpu.cpp.s
+.PHONY : cpu.cpp.s
 
 main.o: main.cpp.o
 
@@ -222,6 +222,33 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+mem.o: mem.cpp.o
+
+.PHONY : mem.o
+
+# target to build an object file
+mem.cpp.o:
+	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/mem.cpp.o
+.PHONY : mem.cpp.o
+
+mem.i: mem.cpp.i
+
+.PHONY : mem.i
+
+# target to preprocess a source file
+mem.cpp.i:
+	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/mem.cpp.i
+.PHONY : mem.cpp.i
+
+mem.s: mem.cpp.s
+
+.PHONY : mem.s
+
+# target to generate assembly for a file
+mem.cpp.s:
+	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/mem.cpp.s
+.PHONY : mem.cpp.s
 
 reg.o: reg.cpp.o
 
@@ -280,6 +307,33 @@ test/test-alu.cpp.s:
 	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-alu.cpp.s
 .PHONY : test/test-alu.cpp.s
 
+test/test-cpu.o: test/test-cpu.cpp.o
+
+.PHONY : test/test-cpu.o
+
+# target to build an object file
+test/test-cpu.cpp.o:
+	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-cpu.cpp.o
+.PHONY : test/test-cpu.cpp.o
+
+test/test-cpu.i: test/test-cpu.cpp.i
+
+.PHONY : test/test-cpu.i
+
+# target to preprocess a source file
+test/test-cpu.cpp.i:
+	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-cpu.cpp.i
+.PHONY : test/test-cpu.cpp.i
+
+test/test-cpu.s: test/test-cpu.cpp.s
+
+.PHONY : test/test-cpu.s
+
+# target to generate assembly for a file
+test/test-cpu.cpp.s:
+	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-cpu.cpp.s
+.PHONY : test/test-cpu.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -293,18 +347,24 @@ help:
 	@echo "... alu.o"
 	@echo "... alu.i"
 	@echo "... alu.s"
-	@echo "... ctr.o"
-	@echo "... ctr.i"
-	@echo "... ctr.s"
+	@echo "... cpu.o"
+	@echo "... cpu.i"
+	@echo "... cpu.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mem.o"
+	@echo "... mem.i"
+	@echo "... mem.s"
 	@echo "... reg.o"
 	@echo "... reg.i"
 	@echo "... reg.s"
 	@echo "... test/test-alu.o"
 	@echo "... test/test-alu.i"
 	@echo "... test/test-alu.s"
+	@echo "... test/test-cpu.o"
+	@echo "... test/test-cpu.i"
+	@echo "... test/test-cpu.s"
 .PHONY : help
 
 

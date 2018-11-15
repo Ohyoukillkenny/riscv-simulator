@@ -4,10 +4,15 @@
 CMakeFiles/emulator_ricv.dir/alu.cpp.o: ../alu.cpp
 CMakeFiles/emulator_ricv.dir/alu.cpp.o: ../alu.h
 
-CMakeFiles/emulator_ricv.dir/ctr.cpp.o: ../ctr.cpp
-CMakeFiles/emulator_ricv.dir/ctr.cpp.o: ../ctr.h
+CMakeFiles/emulator_ricv.dir/cpu.cpp.o: ../alu.h
+CMakeFiles/emulator_ricv.dir/cpu.cpp.o: ../cpu.cpp
+CMakeFiles/emulator_ricv.dir/cpu.cpp.o: ../cpu.h
+CMakeFiles/emulator_ricv.dir/cpu.cpp.o: ../ctr.h
+CMakeFiles/emulator_ricv.dir/cpu.cpp.o: ../reg.h
 
 CMakeFiles/emulator_ricv.dir/main.cpp.o: ../alu.h
+CMakeFiles/emulator_ricv.dir/main.cpp.o: ../cpu.h
+CMakeFiles/emulator_ricv.dir/main.cpp.o: ../ctr.h
 CMakeFiles/emulator_ricv.dir/main.cpp.o: ../main.cpp
 CMakeFiles/emulator_ricv.dir/main.cpp.o: ../reg.h
 

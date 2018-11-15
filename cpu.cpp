@@ -4,23 +4,23 @@
 
 #include "cpu.h"
 cpu::cpu(uint8_t *code) {
-    cpu_alu = alu();
-    cpu_regs = reg();
-    cpu_regs . set_reg(cpu_regs.PC, 0);
+    cpu_alu = new alu();
+    cpu_regs = new reg();
+    cpu_regs -> set_reg(cpu_regs -> PC, 0);
     code_region = code;
 }
 
 cpu::cpu(uint8_t *code, uint32_t pc) {
     if ((pc & 0x00000003) != 0){
         std::cout << "CPU: last 2 bits of init PC must be 00" << std::endl;
-        cpu_alu = alu();
-        cpu_regs = reg();
-        cpu_regs.set_reg(cpu_regs.PC, 0);
+        cpu_alu = new alu();
+        cpu_regs = new reg();
+        cpu_regs -> set_reg(cpu_regs -> PC, 0);
         code_region = code;
     } else{
-        cpu_alu = alu();
-        cpu_regs = reg();
-        cpu_regs.set_reg(cpu_regs.PC, pc);
+        cpu_alu = new alu();
+        cpu_regs = new reg();
+        cpu_regs -> set_reg(cpu_regs -> PC, pc);
         code_region = code + pc;
     }
 }
@@ -47,6 +47,108 @@ uint8_t cpu::get_opcode(uint32_t instr) {
     return ret;
 }
 
+//0000000 01010   10011 000   10010 0110011
+//ADD     rs2=10 rs1=19 func3 rd=18 opcode
+
+uint8_t cpu::get_rd(uint32_t instr) {
+    uint32_t ret;
+    ret = (instr & 0b00000000000000000000111110000000) >> 7;
+    return (uint8_t) ret;
+}
+
+uint8_t cpu::get_func3(uint32_t instr) {
+    uint32_t ret;
+    ret = (instr & 0b00000000000000000111000000000000) >> 12;
+    return (uint8_t) ret;
+}
+
+uint8_t cpu::get_rs1(uint32_t instr) {
+    uint32_t ret;
+    ret = (instr & 0b00000000000011111000000000000000) >> 15;
+    return (uint8_t) ret;
+}
+
+uint8_t cpu::get_rs2(uint32_t instr) {
+    uint32_t ret;
+    ret = (instr & 0b00000001111100000000000000000000) >> 20;
+    return (uint8_t) ret;
+}
+
+uint32_t cpu::get_imm12(uint32_t instr) {
+    uint32_t ret;
+    ret = (instr & 0b11111111111100000000000000000000) >> 20;
+    if ((ret >> 11) == 1){
+        // handle the case when imm is negtive
+        return (ret|0b11111111111111111111000000000000);
+    } else{
+        return ret;
+    }
+}
+
+uint32_t cpu::get_shamt(uint32_t instr) {
+    uint32_t ret;
+    ret = instr & 0b00000001111100000000000000000000 >> 20;
+    if ((ret >> 4) == 1){
+        // handle the case when shamt is negtive
+        std::cout << "CPU: shamt has negative value, which is illegal" << std::endl;
+        return 0;
+    } else{
+        return ret;
+    }
+}
+
+uint8_t cpu::combine_30_func3(uint32_t instr) {
+    uint8_t func3 = get_func3(instr);
+    uint8_t bit30 = (instr & 0x40000000) >> 30;
+    if (bit30 == 1){
+        return (func3 | 0b00001000);
+    } else{
+        return func3;
+    }
+}
+
+
+void cpu::r_type_opcode_process(uint32_t instr) {
+    uint8_t alu_opcode = combine_30_func3(instr);
+    uint8_t rd = get_rd(instr);
+    uint8_t rs1 = get_rs1(instr);
+    uint8_t rs2 = get_rs2(instr);
+
+    // read data form registers
+    uint32_t in1 = cpu_regs -> get_reg(rs1);
+    uint32_t in2 = cpu_regs -> get_reg(rs2);
+    // calculate the value by using alu
+    uint32_t out = cpu_alu -> calculate(in1, in2, alu_opcode);
+    // write the data to rd register
+    cpu_regs -> set_reg(rd, out);
+
+}
+
+void cpu::i_type_opcode_process(uint32_t instr) {
+    uint8_t alu_opcode = get_func3(instr);
+    uint8_t rd = get_rd(instr);
+    uint8_t rs1 = get_rs1(instr);
+    uint32_t in1 = cpu_regs -> get_reg(rs1);
+    uint32_t in2;
+
+    switch (alu_opcode){
+        case 0b0000001:
+            in2 = get_shamt(instr);
+            break;
+        case 0b0000101:
+            in2 = get_shamt(instr);
+            alu_opcode = combine_30_func3(instr);
+            break;
+        default:
+            in2 = get_imm12(instr);
+            break;
+    }
+
+
+    uint32_t out = cpu_alu -> calculate(in1, in2, alu_opcode);
+    cpu_regs -> set_reg(rd, out);
+}
+
 void cpu::process_instr(uint32_t instr) {
     uint8_t opcode = get_opcode(instr);
     switch (opcode){
@@ -57,10 +159,10 @@ void cpu::process_instr(uint32_t instr) {
             break;
 
         case R:
-
+            r_type_opcode_process(instr);
             break;
         case I:
-
+            i_type_opcode_process(instr);
             break;
         case BEQ:
 
@@ -78,5 +180,35 @@ void cpu::process_instr(uint32_t instr) {
             std::cout << "CPU: opcode "<< y << " is not supported by this simulator" << std::endl;
             break;
     }
+}
 
+void cpu::run() {
+    process_instr(0b11111100111000000000001010010011); // addi imm=-50 rs1=x0  rd=x5
+    process_instr(0b00000000000100101000001010010011); // ADDI imm=1   rs1=x5  rd=x5
+    process_instr(0b00000000000000101000100100110011); // ADD  rs2=0   rs1=x5  rd=18
+}
+
+void cpu::print() {
+    std::cout << std::endl << "The state of the CPU" << std::endl;
+    // show the registers
+    for(int i = 0; i < 33; ++i) {
+        if (i == 32){
+            std::bitset<32> bin(cpu_regs -> get_reg(i));
+            std::cout << "PC  register has value : 0b" << bin << std::endl;
+        } else{
+            std::cout << "x" + std::to_string(i) + " register has value : " << (int) cpu_regs -> get_reg(i) << std::endl;
+        }
+    }
+}
+
+
+void cpu::test_instrs(uint32_t *instr_set, int size) {
+    for (int i = 0; i < size; ++i) {
+        uint32_t instr = instr_set[i];
+        process_instr(instr);
+    }
+}
+
+uint32_t cpu::reg_peep(uint8_t num) {
+    return cpu_regs -> get_reg(num);
 }

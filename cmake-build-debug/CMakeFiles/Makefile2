@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug
 CMakeFiles/TestALU.dir/all:
 	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/depend
 	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target TestALU"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target TestALU"
 .PHONY : CMakeFiles/TestALU.dir/all
 
 # Include target in all.
@@ -81,7 +81,7 @@ all: CMakeFiles/TestALU.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TestALU.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TestALU.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/TestALU.dir/rule
@@ -108,7 +108,7 @@ clean: CMakeFiles/TestALU.dir/clean
 CMakeFiles/emulator_ricv.dir/all:
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/depend
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=6,7,8,9,10 "Built target emulator_ricv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target emulator_ricv"
 .PHONY : CMakeFiles/emulator_ricv.dir/all
 
 # Include target in all.
@@ -118,7 +118,7 @@ all: CMakeFiles/emulator_ricv.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/emulator_ricv.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/emulator_ricv.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/emulator_ricv.dir/rule

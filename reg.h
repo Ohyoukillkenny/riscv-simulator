@@ -19,15 +19,15 @@
 
 class reg {
 
-    uint32_t *regs = new uint32_t[33];
+    uint32_t regs[33];
 
 public:
-    const size_t ZR = 0;
-    const size_t RA = 1;
-    const size_t SP = 2;
-    const size_t GP = 3;
-    const size_t TP = 4;
-    const size_t PC = 32;
+    const uint8_t ZR = 0;
+    const uint8_t RA = 1;
+    const uint8_t SP = 2;
+    const uint8_t GP = 3;
+    const uint8_t TP = 4;
+    const uint8_t PC = 32;
 
     reg();
 

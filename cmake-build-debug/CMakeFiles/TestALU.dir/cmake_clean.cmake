@@ -2,7 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/TestALU.dir/test/test-alu.cpp.o"
   "CMakeFiles/TestALU.dir/alu.cpp.o"
   "CMakeFiles/TestALU.dir/reg.cpp.o"
-  "CMakeFiles/TestALU.dir/ctr.cpp.o"
+  "CMakeFiles/TestALU.dir/cpu.cpp.o"
+  "CMakeFiles/TestALU.dir/test/test-cpu.cpp.o"
   "TestALU.pdb"
   "TestALU"
 )

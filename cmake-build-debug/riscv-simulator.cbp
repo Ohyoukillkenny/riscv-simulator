@@ -138,15 +138,21 @@
 			<Option target="TestALU"/>
 			<Option target="emulator_ricv"/>
 		</Unit>
-		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/ctr.cpp">
+		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/cpu.cpp">
 			<Option target="TestALU"/>
 			<Option target="emulator_ricv"/>
 		</Unit>
-		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/ctr.h">
+		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/cpu.h">
 			<Option target="TestALU"/>
 			<Option target="emulator_ricv"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/main.cpp">
+			<Option target="emulator_ricv"/>
+		</Unit>
+		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/mem.cpp">
+			<Option target="emulator_ricv"/>
+		</Unit>
+		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/mem.h">
 			<Option target="emulator_ricv"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/reg.cpp">
@@ -158,6 +164,9 @@
 			<Option target="emulator_ricv"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/test/test-alu.cpp">
+			<Option target="TestALU"/>
+		</Unit>
+		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp">
 			<Option target="TestALU"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/CMakeLists.txt">
@@ -169,10 +178,10 @@
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/alu.h">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/ctr.cpp">
+		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/cpu.cpp">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/ctr.h">
+		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/cpu.h">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/reg.cpp">
@@ -182,6 +191,9 @@
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/test/test-alu.cpp">
+			<Option virtualFolder="CMake Files\test\"/>
+		</Unit>
+		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp">
 			<Option virtualFolder="CMake Files\test\"/>
 		</Unit>
 	</Project>

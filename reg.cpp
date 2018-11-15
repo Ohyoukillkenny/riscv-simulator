@@ -6,18 +6,15 @@
 #include "reg.h"
 
 reg::reg() {
-    regs[0] = 0;
-    regs[PC] = 0; // PC is default set to be 0
+    for (int i = 0; i< 33; i++){
+        regs[i] = 0;
+    }
 }
 
 
 uint32_t reg::get_reg(uint8_t addr){
     if (addr > 32){
         std::cout << "Reg: invalid register address" << std::endl;
-        return 0;
-    }
-    if (regs[addr] == NULL){
-        std::cout << "Reg: reg[addr] is empty" << std::endl;
         return 0;
     }
     return regs[addr];
@@ -28,10 +25,6 @@ uint16_t reg::get_reg_high(uint8_t addr) {
         std::cout << "Reg: invalid register address" << std::endl;
         return 0;
     }
-    if (regs[addr] == NULL){
-        std::cout << "Reg: reg[addr] is empty" << std::endl;
-        return 0;
-    }
     uint16_t res = regs[addr] >> 16;
     return res;
 }
@@ -39,10 +32,6 @@ uint16_t reg::get_reg_high(uint8_t addr) {
 uint16_t reg::get_reg_low(uint8_t addr) {
     if (addr > 32){
         std::cout << "Reg: invalid register address" << std::endl;
-        return 0;
-    }
-    if (regs[addr] == NULL){
-        std::cout << "Reg: reg[addr] is empty" << std::endl;
         return 0;
     }
     uint32_t res = regs[addr] & 0x0000ffff;

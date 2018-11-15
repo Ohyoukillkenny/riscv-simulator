@@ -96,25 +96,39 @@ CMakeFiles/TestALU.dir/reg.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestALU.dir/reg.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/reg.cpp -o CMakeFiles/TestALU.dir/reg.cpp.s
 
-CMakeFiles/TestALU.dir/ctr.cpp.o: CMakeFiles/TestALU.dir/flags.make
-CMakeFiles/TestALU.dir/ctr.cpp.o: ../ctr.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/TestALU.dir/ctr.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestALU.dir/ctr.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/ctr.cpp
+CMakeFiles/TestALU.dir/cpu.cpp.o: CMakeFiles/TestALU.dir/flags.make
+CMakeFiles/TestALU.dir/cpu.cpp.o: ../cpu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/TestALU.dir/cpu.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestALU.dir/cpu.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/cpu.cpp
 
-CMakeFiles/TestALU.dir/ctr.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestALU.dir/ctr.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/ctr.cpp > CMakeFiles/TestALU.dir/ctr.cpp.i
+CMakeFiles/TestALU.dir/cpu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestALU.dir/cpu.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/cpu.cpp > CMakeFiles/TestALU.dir/cpu.cpp.i
 
-CMakeFiles/TestALU.dir/ctr.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestALU.dir/ctr.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/ctr.cpp -o CMakeFiles/TestALU.dir/ctr.cpp.s
+CMakeFiles/TestALU.dir/cpu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestALU.dir/cpu.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/cpu.cpp -o CMakeFiles/TestALU.dir/cpu.cpp.s
+
+CMakeFiles/TestALU.dir/test/test-cpu.cpp.o: CMakeFiles/TestALU.dir/flags.make
+CMakeFiles/TestALU.dir/test/test-cpu.cpp.o: ../test/test-cpu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/TestALU.dir/test/test-cpu.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestALU.dir/test/test-cpu.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp
+
+CMakeFiles/TestALU.dir/test/test-cpu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestALU.dir/test/test-cpu.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp > CMakeFiles/TestALU.dir/test/test-cpu.cpp.i
+
+CMakeFiles/TestALU.dir/test/test-cpu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestALU.dir/test/test-cpu.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp -o CMakeFiles/TestALU.dir/test/test-cpu.cpp.s
 
 # Object files for target TestALU
 TestALU_OBJECTS = \
 "CMakeFiles/TestALU.dir/test/test-alu.cpp.o" \
 "CMakeFiles/TestALU.dir/alu.cpp.o" \
 "CMakeFiles/TestALU.dir/reg.cpp.o" \
-"CMakeFiles/TestALU.dir/ctr.cpp.o"
+"CMakeFiles/TestALU.dir/cpu.cpp.o" \
+"CMakeFiles/TestALU.dir/test/test-cpu.cpp.o"
 
 # External object files for target TestALU
 TestALU_EXTERNAL_OBJECTS =
@@ -122,10 +136,11 @@ TestALU_EXTERNAL_OBJECTS =
 TestALU: CMakeFiles/TestALU.dir/test/test-alu.cpp.o
 TestALU: CMakeFiles/TestALU.dir/alu.cpp.o
 TestALU: CMakeFiles/TestALU.dir/reg.cpp.o
-TestALU: CMakeFiles/TestALU.dir/ctr.cpp.o
+TestALU: CMakeFiles/TestALU.dir/cpu.cpp.o
+TestALU: CMakeFiles/TestALU.dir/test/test-cpu.cpp.o
 TestALU: CMakeFiles/TestALU.dir/build.make
 TestALU: CMakeFiles/TestALU.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable TestALU"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable TestALU"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TestALU.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

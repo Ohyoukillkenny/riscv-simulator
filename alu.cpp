@@ -42,7 +42,7 @@ uint32_t alu::calculate(uint32_t in1, uint32_t in2, uint8_t op) {
             break;
         default:
             out = (uint32_t) 0;
-            std::cout << "ALU cannot recognize the operating instruction" << std::endl;
+            std::cout << "ALU: cannot recognize the operating instruction" << std::endl;
             break;
     }
     return out;

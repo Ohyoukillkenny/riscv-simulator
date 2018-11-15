@@ -5,9 +5,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/klk/CLionProjects/riscv-simulator/alu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestALU.dir/alu.cpp.o"
-  "/Users/klk/CLionProjects/riscv-simulator/ctr.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestALU.dir/ctr.cpp.o"
+  "/Users/klk/CLionProjects/riscv-simulator/cpu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestALU.dir/cpu.cpp.o"
   "/Users/klk/CLionProjects/riscv-simulator/reg.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestALU.dir/reg.cpp.o"
   "/Users/klk/CLionProjects/riscv-simulator/test/test-alu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestALU.dir/test/test-alu.cpp.o"
+  "/Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestALU.dir/test/test-cpu.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

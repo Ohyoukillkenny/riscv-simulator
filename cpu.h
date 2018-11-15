@@ -21,19 +21,44 @@ const uint8_t BEQ = 0b01100011; // beq                exp. beq  rs1, rs2, imm
 const uint8_t J = 0b01101111; // jump, only JAL       exp. jal  rd, imm
 
 class cpu {
-    reg cpu_regs;
-    alu cpu_alu;
+    reg *cpu_regs;
+    alu *cpu_alu;
     uint8_t *code_region;
 
-    uint8_t alu_op;
-    bool jump, beq, bne, mem_read, mem_write, alu_src, reg_dst, mem_to_reg, reg_write;
 
+    /* methods for instruction processing:
+     * combine_instr:   combine 4 bytes to a 32 bits instruction
+     * get_opcode:      parse the opcode from the instruction
+     * get_rd:          get rd register from the instruction
+     * get_func3:       get func3 from the instruction
+     * get_rs1:         get rs1 register from the instruction
+     * get_rs2:         get rs2 register from the instruction
+     * combine_30_func3:      bit30 + [func3] -> 4 bits alu_op
+     * */
     uint32_t combine_instr(uint8_t *start);
+
     uint8_t get_opcode(uint32_t instr);
+
+    uint8_t get_rd(uint32_t instr);
+
+    uint8_t get_func3(uint32_t instr);
+
+    uint8_t get_rs1(uint32_t instr);
+
+    uint8_t get_rs2(uint32_t instr);
+
+    uint8_t combine_30_func3(uint32_t instr);
+
+    uint32_t get_imm12(uint32_t instr);
+
+    uint32_t get_shamt(uint32_t instr);
+
     // process the 32 bits instruction
     void process_instr(uint32_t instr);
-    // process the instruction after know it belongs to R-type
+    // R-type
     void r_type_opcode_process(uint32_t instr);
+    // I-type
+    void i_type_opcode_process(uint32_t instr);
 
 
 
@@ -45,6 +70,10 @@ public:
      * Prints cpu status
      */
     void print();
+
+    // methods prepared for the cpu-test in test file
+    void test_instrs(uint32_t *instr_set, int size);
+    uint32_t reg_peep(uint8_t num);
 };
 
 
