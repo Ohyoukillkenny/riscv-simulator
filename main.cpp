@@ -47,17 +47,18 @@ int main() {
 
 
     cpu *instance = new cpu(code_region);
-//    instance->run();
-//    instance -> print();
+    instance->run();
+    std::cout << instance -> mem_peep(19) << std::endl;
+    instance -> print();
 
 
 
-    uint32_t instr = 0b01000000101010011101100100110011;
-
-    uint32_t out = instr;
-
-    std::cout << (int)out << std::endl;
-    std::bitset<32> y(out);
-    std::cout << y;
+//    uint32_t instr = 0b01000000101010011101100100110011;
+//
+//    uint32_t out = instr;
+//
+//    std::cout << (int)out << std::endl;
+//    std::bitset<32> y(out);
+//    std::cout << y;
     return 0;
 }

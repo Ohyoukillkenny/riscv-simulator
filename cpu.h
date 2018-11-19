@@ -7,6 +7,7 @@
 #include "reg.h"
 #include "alu.h"
 #include "ctr.h"
+#include "mem.h"
 #ifndef RISCV_SIMULATOR_CPU_H
 #define RISCV_SIMULATOR_CPU_H
 
@@ -23,19 +24,23 @@ const uint8_t J = 0b01101111; // jump, only JAL       exp. jal  rd, imm
 class cpu {
     reg *cpu_regs;
     alu *cpu_alu;
+    mem *cpu_sram;
     uint8_t *code_region;
 
 
     /* methods for instruction processing:
      * combine_instr:   combine 4 bytes to a 32 bits instruction
+     * get_funct:    get funct7, bit position from 31 to 25
      * get_opcode:      parse the opcode from the instruction
-     * get_rd:          get rd register from the instruction
+     * get_rd:          get rd register from the instruction, for save instruction, it is imm
      * get_func3:       get func3 from the instruction
      * get_rs1:         get rs1 register from the instruction
      * get_rs2:         get rs2 register from the instruction
      * combine_30_func3:      bit30 + [func3] -> 4 bits alu_op
      * */
     uint32_t combine_instr(uint8_t *start);
+
+    uint8_t get_funct(uint32_t instr);
 
     uint8_t get_opcode(uint32_t instr);
 
@@ -53,12 +58,17 @@ class cpu {
 
     uint32_t get_shamt(uint32_t instr);
 
+    // function for S-type instructions
+    void save_word(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
+
     // process the 32 bits instruction
     void process_instr(uint32_t instr);
     // R-type
     void r_type_opcode_process(uint32_t instr);
     // I-type
     void i_type_opcode_process(uint32_t instr);
+    // S-type
+    void s_type_opcode_process(uint32_t instr);
 
 
 
@@ -73,7 +83,8 @@ public:
 
     // methods prepared for the cpu-test in test file
     void test_instrs(uint32_t *instr_set, int size);
-    uint32_t reg_peep(uint8_t num);
+    uint32_t reg_peep(uint8_t addr);
+    uint32_t mem_peep(uint32_t addr);
 };
 
 

@@ -11,7 +11,8 @@
 
 class mem {
     const int mem_size = 2048;
-    uint32_t sram[mem_size];
+    // default size of sram is 2048
+    uint32_t sram[2048];
 public:
     mem();
 

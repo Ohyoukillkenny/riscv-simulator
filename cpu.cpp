@@ -4,6 +4,7 @@
 
 #include "cpu.h"
 cpu::cpu(uint8_t *code) {
+    cpu_sram = new mem();
     cpu_alu = new alu();
     cpu_regs = new reg();
     cpu_regs -> set_reg(cpu_regs -> PC, 0);
@@ -32,6 +33,12 @@ uint32_t cpu::combine_instr(uint8_t *start) {
     ret = ret | start[1] << 16;
     ret = ret | start[0] << 24;
     return  ret;
+}
+
+uint8_t get_funct7(uint32_t instr){
+    uint32_t ret;
+    ret = (instr & 0b11111110000000000000000000000000) >> 25;
+    return (uint8_t) ret;
 }
 
 uint8_t cpu::get_opcode(uint32_t instr) {
@@ -87,7 +94,7 @@ uint32_t cpu::get_imm12(uint32_t instr) {
 
 uint32_t cpu::get_shamt(uint32_t instr) {
     uint32_t ret;
-    ret = instr & 0b00000001111100000000000000000000 >> 20;
+    ret = (instr & 0b00000001111100000000000000000000) >> 20;
     if ((ret >> 4) == 1){
         // handle the case when shamt is negtive
         std::cout << "CPU: shamt has negative value, which is illegal" << std::endl;
@@ -149,6 +156,40 @@ void cpu::i_type_opcode_process(uint32_t instr) {
     cpu_regs -> set_reg(rd, out);
 }
 
+void cpu::save_word(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
+    uint8_t src_reg = get_rs2(instr);
+    uint8_t base_reg = get_rs1(instr);
+    uint32_t src_val = cpu_regs -> get_reg(src_reg);
+    uint32_t base_address = cpu_regs -> get_reg(base_reg);
+    uint32_t mem_address = cpu_alu -> calculate(base_address, imm, alu_opcode);
+    cpu_sram -> set_mem(mem_address, src_val);
+}
+
+void cpu::s_type_opcode_process(uint32_t instr){
+    uint8_t imm11to5 = get_funct7(instr); // 7 bits
+    uint8_t imm4to0 = get_rd(instr);      // 5 bits
+    uint16_t imm = (((uint16_t) imm11to5 )<< 5) | (uint16_t) imm4to0;
+    uint8_t alu_opcode = 0; // add
+    uint8_t funct3 = get_func3(instr);
+
+    switch (funct3){
+        case 0b000:
+            // SB
+            break;
+        case 0b001:
+            // SH
+            break;
+        case 0b010:
+            save_word(instr, imm, alu_opcode);
+            // SW
+            break;
+        default:
+            std::bitset<32> y(funct3);
+            std::cout << "CPU Save: Funct3 "<< y << " is not supported by this simulator" << std::endl;
+            break;
+    }
+}
+
 void cpu::process_instr(uint32_t instr) {
     uint8_t opcode = get_opcode(instr);
     switch (opcode){
@@ -156,6 +197,7 @@ void cpu::process_instr(uint32_t instr) {
             break;
 
         case S:
+            s_type_opcode_process(instr);
             break;
 
         case R:
@@ -183,18 +225,22 @@ void cpu::process_instr(uint32_t instr) {
 }
 
 void cpu::run() {
+    process_instr(0b00000000010000000000000100010011);  // ADDI imm=4, rs1=x0  rd=x2 -> x2 = 4
+    process_instr(0b00000000000100000000001010010011);  // ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1
+    process_instr(0b00000000001000101010100100100011);  // SW  offset1=0, src=x2, base=x5, offset2=18 -> save 4 to mem(1+18)
     process_instr(0b11111100111000000000001010010011); // addi imm=-50 rs1=x0  rd=x5
     process_instr(0b00000000000100101000001010010011); // ADDI imm=1   rs1=x5  rd=x5
     process_instr(0b00000000000000101000100100110011); // ADD  rs2=0   rs1=x5  rd=18
+    // x2 = 4, x5 = -49, x18 = -49, sram[19] = 4
 }
 
 void cpu::print() {
-    std::cout << std::endl << "The state of the CPU" << std::endl;
+    std::cout << std::endl << "== The state of the CPU ==" << std::endl;
     // show the registers
     for(int i = 0; i < 33; ++i) {
         if (i == 32){
             std::bitset<32> bin(cpu_regs -> get_reg(i));
-            std::cout << "PC  register has value : 0b" << bin << std::endl;
+            std::cout << "PC  register has value : 0xb" << bin << std::endl;
         } else{
             std::cout << "x" + std::to_string(i) + " register has value : " << (int) cpu_regs -> get_reg(i) << std::endl;
         }
@@ -209,6 +255,10 @@ void cpu::test_instrs(uint32_t *instr_set, int size) {
     }
 }
 
-uint32_t cpu::reg_peep(uint8_t num) {
-    return cpu_regs -> get_reg(num);
+uint32_t cpu::reg_peep(uint8_t addr) {
+    return cpu_regs -> get_reg(addr);
+}
+
+uint32_t cpu::mem_peep(uint32_t addr){
+    return cpu_sram -> get_mem(addr);
 }

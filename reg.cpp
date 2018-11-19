@@ -11,7 +11,6 @@ reg::reg() {
     }
 }
 
-
 uint32_t reg::get_reg(uint8_t addr){
     if (addr > 32){
         std::cout << "Reg: invalid register address" << std::endl;

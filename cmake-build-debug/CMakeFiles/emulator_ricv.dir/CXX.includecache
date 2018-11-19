@@ -10,6 +10,10 @@
 iostream
 -
 
+/Users/klk/CLionProjects/riscv-simulator/cpu.cpp
+cpu.h
+/Users/klk/CLionProjects/riscv-simulator/cpu.h
+
 /Users/klk/CLionProjects/riscv-simulator/cpu.h
 cstdint
 -
@@ -21,28 +25,18 @@ alu.h
 /Users/klk/CLionProjects/riscv-simulator/alu.h
 ctr.h
 /Users/klk/CLionProjects/riscv-simulator/ctr.h
+mem.h
+/Users/klk/CLionProjects/riscv-simulator/mem.h
 
 /Users/klk/CLionProjects/riscv-simulator/ctr.h
 iostream
 -
 
-/Users/klk/CLionProjects/riscv-simulator/main.cpp
-iostream
--
-climits
--
-fstream
+/Users/klk/CLionProjects/riscv-simulator/mem.h
+cstdint
 -
 vector
 -
-queue
--
-alu.h
-/Users/klk/CLionProjects/riscv-simulator/alu.h
-reg.h
-/Users/klk/CLionProjects/riscv-simulator/reg.h
-cpu.h
-/Users/klk/CLionProjects/riscv-simulator/cpu.h
 
 /Users/klk/CLionProjects/riscv-simulator/reg.h
 cstdint
