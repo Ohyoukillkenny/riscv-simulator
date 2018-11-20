@@ -46,19 +46,21 @@ int main() {
     code_region[3] = 0b10010011;  // PC 0b011
 
 
-    cpu *instance = new cpu(code_region);
-    instance->run();
-    std::cout << instance -> mem_peep(19) << std::endl;
-    instance -> print();
+//    cpu *instance = new cpu(code_region);
+//    instance->run();
+//    std::cout << instance -> mem_peep(19) << std::endl;
+//    instance -> print();
 
+    uint8_t a = 0b10000001;
+    uint32_t b = a;
 
 
 //    uint32_t instr = 0b01000000101010011101100100110011;
 //
 //    uint32_t out = instr;
 //
-//    std::cout << (int)out << std::endl;
-//    std::bitset<32> y(out);
-//    std::cout << y;
+    std::cout << (int)b << std::endl;
+    std::bitset<32> y(b);
+    std::cout << y;
     return 0;
 }

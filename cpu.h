@@ -60,6 +60,8 @@ class cpu {
 
     // function for S-type instructions
     void save_word(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
+    void save_byte(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
+    void save_hex(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
 
     // process the 32 bits instruction
     void process_instr(uint32_t instr);

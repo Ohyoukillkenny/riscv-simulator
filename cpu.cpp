@@ -165,19 +165,40 @@ void cpu::save_word(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
     cpu_sram -> set_mem(mem_address, src_val);
 }
 
+void cpu::save_byte(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
+    uint8_t src_reg = get_rs2(instr);
+    uint8_t base_reg = get_rs1(instr);
+    uint32_t src_val = cpu_regs -> get_reg(src_reg);
+    uint32_t src_byte_val = (src_val & 0b00000000000000000000000011111111);
+    uint32_t base_address = cpu_regs -> get_reg(base_reg);
+    uint32_t mem_address = cpu_alu -> calculate(base_address, imm, alu_opcode);
+    cpu_sram -> set_mem(mem_address, src_byte_val);
+}
+void cpu::save_hex(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
+    uint8_t src_reg = get_rs2(instr);
+    uint8_t base_reg = get_rs1(instr);
+    uint32_t src_val = cpu_regs -> get_reg(src_reg);
+    uint32_t src_hex_val =  (src_val & 0b00000000000000001111111111111111);
+    uint32_t base_address = cpu_regs -> get_reg(base_reg);
+    uint32_t mem_address = cpu_alu -> calculate(base_address, imm, alu_opcode);
+    cpu_sram -> set_mem(mem_address, src_hex_val);
+}
+
+
 void cpu::s_type_opcode_process(uint32_t instr){
     uint8_t imm11to5 = get_funct7(instr); // 7 bits
     uint8_t imm4to0 = get_rd(instr);      // 5 bits
     uint16_t imm = (((uint16_t) imm11to5 )<< 5) | (uint16_t) imm4to0;
     uint8_t alu_opcode = 0; // add
     uint8_t funct3 = get_func3(instr);
-
     switch (funct3){
         case 0b000:
             // SB
+            save_byte(instr, imm, alu_opcode);
             break;
         case 0b001:
             // SH
+            save_hex(instr, imm, alu_opcode);
             break;
         case 0b010:
             save_word(instr, imm, alu_opcode);
@@ -228,9 +249,9 @@ void cpu::run() {
     process_instr(0b00000000010000000000000100010011);  // ADDI imm=4, rs1=x0  rd=x2 -> x2 = 4
     process_instr(0b00000000000100000000001010010011);  // ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1
     process_instr(0b00000000001000101010100100100011);  // SW  offset1=0, src=x2, base=x5, offset2=18 -> save 4 to mem(1+18)
-    process_instr(0b11111100111000000000001010010011); // addi imm=-50 rs1=x0  rd=x5
-    process_instr(0b00000000000100101000001010010011); // ADDI imm=1   rs1=x5  rd=x5
-    process_instr(0b00000000000000101000100100110011); // ADD  rs2=0   rs1=x5  rd=18
+    process_instr(0b11111100111000000000001010010011);  // addi imm=-50 rs1=x0  rd=x5
+    process_instr(0b00000000000100101000001010010011);  // ADDI imm=1   rs1=x5  rd=x5
+    process_instr(0b00000000000000101000100100110011);  // ADD  rs2=0   rs1=x5  rd=18
     // x2 = 4, x5 = -49, x18 = -49, sram[19] = 4
 }
 

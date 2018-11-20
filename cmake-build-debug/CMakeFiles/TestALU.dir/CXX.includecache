@@ -6,19 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/klk/CLionProjects/riscv-simulator/alu.cpp
-cstdint
--
-alu.h
-/Users/klk/CLionProjects/riscv-simulator/alu.h
-
 /Users/klk/CLionProjects/riscv-simulator/alu.h
 iostream
 -
-
-/Users/klk/CLionProjects/riscv-simulator/cpu.cpp
-cpu.h
-/Users/klk/CLionProjects/riscv-simulator/cpu.h
 
 /Users/klk/CLionProjects/riscv-simulator/cpu.h
 cstdint
@@ -31,16 +21,18 @@ alu.h
 /Users/klk/CLionProjects/riscv-simulator/alu.h
 ctr.h
 /Users/klk/CLionProjects/riscv-simulator/ctr.h
+mem.h
+/Users/klk/CLionProjects/riscv-simulator/mem.h
 
 /Users/klk/CLionProjects/riscv-simulator/ctr.h
 iostream
 -
 
-/Users/klk/CLionProjects/riscv-simulator/reg.cpp
-iostream
+/Users/klk/CLionProjects/riscv-simulator/mem.h
+cstdint
 -
-reg.h
-/Users/klk/CLionProjects/riscv-simulator/reg.h
+vector
+-
 
 /Users/klk/CLionProjects/riscv-simulator/reg.h
 cstdint
@@ -48,15 +40,11 @@ cstdint
 vector
 -
 
-/Users/klk/CLionProjects/riscv-simulator/test/test-alu.cpp
-gtest/gtest.h
--
-../alu.h
-/Users/klk/CLionProjects/riscv-simulator/alu.h
-
 /Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp
 gtest/gtest.h
 -
 ../cpu.h
 /Users/klk/CLionProjects/riscv-simulator/cpu.h
+../mem.h
+/Users/klk/CLionProjects/riscv-simulator/mem.h
 

@@ -15,6 +15,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.12.4/CMakeSystem.cmake"
   "../cpu.cpp"
   "../cpu.h"
+  "../mem.cpp"
+  "../mem.h"
   "../reg.cpp"
   "../reg.h"
   "../test/test-alu.cpp"
@@ -66,6 +68,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/TestALU.dir/DependInfo.cmake"
+  "CMakeFiles/TestAll.dir/DependInfo.cmake"
   "CMakeFiles/emulator_ricv.dir/DependInfo.cmake"
   )

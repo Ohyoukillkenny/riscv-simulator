@@ -65,39 +65,39 @@ CMAKE_SOURCE_DIR = /Users/klk/CLionProjects/riscv-simulator
 CMAKE_BINARY_DIR = /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/TestALU.dir
+# Target rules for target CMakeFiles/TestAll.dir
 
 # All Build rule for target.
-CMakeFiles/TestALU.dir/all:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/depend
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target TestALU"
-.PHONY : CMakeFiles/TestALU.dir/all
+CMakeFiles/TestAll.dir/all:
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/depend
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target TestAll"
+.PHONY : CMakeFiles/TestAll.dir/all
 
 # Include target in all.
-all: CMakeFiles/TestALU.dir/all
+all: CMakeFiles/TestAll.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/TestALU.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TestALU.dir/all
+CMakeFiles/TestAll.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 7
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TestAll.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/TestALU.dir/rule
+.PHONY : CMakeFiles/TestAll.dir/rule
 
 # Convenience name for target.
-TestALU: CMakeFiles/TestALU.dir/rule
+TestAll: CMakeFiles/TestAll.dir/rule
 
-.PHONY : TestALU
-
-# clean rule for target.
-CMakeFiles/TestALU.dir/clean:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/clean
-.PHONY : CMakeFiles/TestALU.dir/clean
+.PHONY : TestAll
 
 # clean rule for target.
-clean: CMakeFiles/TestALU.dir/clean
+CMakeFiles/TestAll.dir/clean:
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/clean
+.PHONY : CMakeFiles/TestAll.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/TestAll.dir/clean
 
 .PHONY : clean
 
@@ -108,7 +108,7 @@ clean: CMakeFiles/TestALU.dir/clean
 CMakeFiles/emulator_ricv.dir/all:
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/depend
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target emulator_ricv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=8,9,10,11,12,13 "Built target emulator_ricv"
 .PHONY : CMakeFiles/emulator_ricv.dir/all
 
 # Include target in all.

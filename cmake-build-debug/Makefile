@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named TestALU
+# Target rules for targets named TestAll
 
 # Build rule for target.
-TestALU: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TestALU
-.PHONY : TestALU
+TestAll: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TestAll
+.PHONY : TestAll
 
 # fast build rule for target.
-TestALU/fast:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/build
-.PHONY : TestALU/fast
+TestAll/fast:
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/build
+.PHONY : TestAll/fast
 
 #=============================================================================
 # Target rules for targets named emulator_ricv
@@ -142,7 +142,7 @@ alu.o: alu.cpp.o
 
 # target to build an object file
 alu.cpp.o:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/alu.cpp.o
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/alu.cpp.o
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/alu.cpp.o
 .PHONY : alu.cpp.o
 
@@ -152,7 +152,7 @@ alu.i: alu.cpp.i
 
 # target to preprocess a source file
 alu.cpp.i:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/alu.cpp.i
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/alu.cpp.i
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/alu.cpp.i
 .PHONY : alu.cpp.i
 
@@ -162,7 +162,7 @@ alu.s: alu.cpp.s
 
 # target to generate assembly for a file
 alu.cpp.s:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/alu.cpp.s
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/alu.cpp.s
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/alu.cpp.s
 .PHONY : alu.cpp.s
 
@@ -172,7 +172,7 @@ cpu.o: cpu.cpp.o
 
 # target to build an object file
 cpu.cpp.o:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/cpu.cpp.o
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/cpu.cpp.o
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/cpu.cpp.o
 .PHONY : cpu.cpp.o
 
@@ -182,7 +182,7 @@ cpu.i: cpu.cpp.i
 
 # target to preprocess a source file
 cpu.cpp.i:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/cpu.cpp.i
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/cpu.cpp.i
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/cpu.cpp.i
 .PHONY : cpu.cpp.i
 
@@ -192,7 +192,7 @@ cpu.s: cpu.cpp.s
 
 # target to generate assembly for a file
 cpu.cpp.s:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/cpu.cpp.s
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/cpu.cpp.s
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/cpu.cpp.s
 .PHONY : cpu.cpp.s
 
@@ -229,6 +229,7 @@ mem.o: mem.cpp.o
 
 # target to build an object file
 mem.cpp.o:
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/mem.cpp.o
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/mem.cpp.o
 .PHONY : mem.cpp.o
 
@@ -238,6 +239,7 @@ mem.i: mem.cpp.i
 
 # target to preprocess a source file
 mem.cpp.i:
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/mem.cpp.i
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/mem.cpp.i
 .PHONY : mem.cpp.i
 
@@ -247,6 +249,7 @@ mem.s: mem.cpp.s
 
 # target to generate assembly for a file
 mem.cpp.s:
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/mem.cpp.s
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/mem.cpp.s
 .PHONY : mem.cpp.s
 
@@ -256,7 +259,7 @@ reg.o: reg.cpp.o
 
 # target to build an object file
 reg.cpp.o:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/reg.cpp.o
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/reg.cpp.o
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/reg.cpp.o
 .PHONY : reg.cpp.o
 
@@ -266,7 +269,7 @@ reg.i: reg.cpp.i
 
 # target to preprocess a source file
 reg.cpp.i:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/reg.cpp.i
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/reg.cpp.i
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/reg.cpp.i
 .PHONY : reg.cpp.i
 
@@ -276,7 +279,7 @@ reg.s: reg.cpp.s
 
 # target to generate assembly for a file
 reg.cpp.s:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/reg.cpp.s
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/reg.cpp.s
 	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/reg.cpp.s
 .PHONY : reg.cpp.s
 
@@ -286,7 +289,7 @@ test/test-alu.o: test/test-alu.cpp.o
 
 # target to build an object file
 test/test-alu.cpp.o:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-alu.cpp.o
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/test/test-alu.cpp.o
 .PHONY : test/test-alu.cpp.o
 
 test/test-alu.i: test/test-alu.cpp.i
@@ -295,7 +298,7 @@ test/test-alu.i: test/test-alu.cpp.i
 
 # target to preprocess a source file
 test/test-alu.cpp.i:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-alu.cpp.i
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/test/test-alu.cpp.i
 .PHONY : test/test-alu.cpp.i
 
 test/test-alu.s: test/test-alu.cpp.s
@@ -304,7 +307,7 @@ test/test-alu.s: test/test-alu.cpp.s
 
 # target to generate assembly for a file
 test/test-alu.cpp.s:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-alu.cpp.s
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/test/test-alu.cpp.s
 .PHONY : test/test-alu.cpp.s
 
 test/test-cpu.o: test/test-cpu.cpp.o
@@ -313,7 +316,7 @@ test/test-cpu.o: test/test-cpu.cpp.o
 
 # target to build an object file
 test/test-cpu.cpp.o:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-cpu.cpp.o
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/test/test-cpu.cpp.o
 .PHONY : test/test-cpu.cpp.o
 
 test/test-cpu.i: test/test-cpu.cpp.i
@@ -322,7 +325,7 @@ test/test-cpu.i: test/test-cpu.cpp.i
 
 # target to preprocess a source file
 test/test-cpu.cpp.i:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-cpu.cpp.i
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/test/test-cpu.cpp.i
 .PHONY : test/test-cpu.cpp.i
 
 test/test-cpu.s: test/test-cpu.cpp.s
@@ -331,7 +334,7 @@ test/test-cpu.s: test/test-cpu.cpp.s
 
 # target to generate assembly for a file
 test/test-cpu.cpp.s:
-	$(MAKE) -f CMakeFiles/TestALU.dir/build.make CMakeFiles/TestALU.dir/test/test-cpu.cpp.s
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/test/test-cpu.cpp.s
 .PHONY : test/test-cpu.cpp.s
 
 # Help Target
@@ -340,9 +343,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... TestALU"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... TestAll"
 	@echo "... emulator_ricv"
 	@echo "... alu.o"
 	@echo "... alu.i"
