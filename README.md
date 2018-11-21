@@ -24,7 +24,7 @@ Install Clion: https://www.jetbrains.com/clion/
 add x10, x5, x6
 ```
 
-Here, `x10` is rd, `x5` is rs1, `x6` is rs2, or you guys can set your own rules. However, if there is some universal rules for the riscv assembly code, just write the assembly code according to these rules.						
+Here, `x10` is rd, `x5` is rs1, `x6` is rs2, or you guys can set your own rules. However, if there are some universal naming rules for the riscv assembly code, just write the assembly code according to these rules.
 
 =>
 
@@ -39,3 +39,6 @@ Sample of exe.txt:
 00000001001100000100001010000011
 ```
 
+=>
+
+Response from our simulator, i.e., change of the states of registers and the values stored in memory.
