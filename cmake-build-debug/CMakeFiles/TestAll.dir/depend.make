@@ -7,7 +7,6 @@ CMakeFiles/TestAll.dir/alu.cpp.o: ../alu.h
 CMakeFiles/TestAll.dir/cpu.cpp.o: ../alu.h
 CMakeFiles/TestAll.dir/cpu.cpp.o: ../cpu.cpp
 CMakeFiles/TestAll.dir/cpu.cpp.o: ../cpu.h
-CMakeFiles/TestAll.dir/cpu.cpp.o: ../ctr.h
 CMakeFiles/TestAll.dir/cpu.cpp.o: ../mem.h
 CMakeFiles/TestAll.dir/cpu.cpp.o: ../reg.h
 
@@ -22,7 +21,6 @@ CMakeFiles/TestAll.dir/test/test-alu.cpp.o: ../test/test-alu.cpp
 
 CMakeFiles/TestAll.dir/test/test-cpu.cpp.o: ../alu.h
 CMakeFiles/TestAll.dir/test/test-cpu.cpp.o: ../cpu.h
-CMakeFiles/TestAll.dir/test/test-cpu.cpp.o: ../ctr.h
 CMakeFiles/TestAll.dir/test/test-cpu.cpp.o: ../mem.h
 CMakeFiles/TestAll.dir/test/test-cpu.cpp.o: ../reg.h
 CMakeFiles/TestAll.dir/test/test-cpu.cpp.o: ../test/test-cpu.cpp

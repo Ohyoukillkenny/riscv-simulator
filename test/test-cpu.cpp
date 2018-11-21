@@ -115,3 +115,75 @@ TEST_F(test_cpu, test_cpu_lbu)
     EXPECT_EQ((int) instance -> mem_peep((uint32_t)19), 388);
     EXPECT_EQ((int) instance -> reg_peep(5), 132);
 }
+
+TEST_F(test_cpu, test_cpu_beq_not_jump)
+{
+    uint32_t *instr_set = new uint32_t[10];
+    instr_set[0] = 0b00000000000100000000001010010011;  // ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1
+    instr_set[1] = 0b00000000000100101000001010010011;  // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1 -> x5=2
+    instr_set[2] = 0b00000000000000101000010001100011;  // BEQ offset=8, rs2=x0, rs1=x5
+    instr_set[3] = 0b00000000000100101000001010010011;  // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1 -> x5=3
+    instr_set[4] = 0b00000000000100101000001010010011;  // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1 -> x5=4
+    int num_instr = 5;
+    uint8_t  *code_region = new uint8_t[1024];
+    for (int i = 0; i < num_instr; ++i) {
+        code_region[4*i] = (uint8_t) ((instr_set[i] >> 24) & 0x000000ff);
+        code_region[4*i+1] = (uint8_t) ((instr_set[i] >> 16) & 0x000000ff);
+        code_region[4*i+2] = (uint8_t) ((instr_set[i] >> 8) & 0x000000ff);
+        code_region[4*i+3] = (uint8_t) ((instr_set[i]) & 0x000000ff);
+    }
+    cpu *new_instance = new cpu(code_region, num_instr*4);
+    new_instance -> run();
+    EXPECT_EQ((int) new_instance -> reg_peep(5), 4);
+}
+
+TEST_F(test_cpu, test_cpu_bne_jump)
+{
+    uint32_t *instr_set = new uint32_t[10];
+    instr_set[0] = 0b00000000000100000000001010010011;  // ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1
+    instr_set[1] = 0b00000000000100101000001010010011;  // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1 -> x5=2
+    instr_set[2] = 0b00000000000000101001010001100011;  // BNE offset=8, rs2=x0, rs1=x5
+    instr_set[3] = 0b00000000000100101000001010010011;  // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1 be skipped by branch)
+    instr_set[4] = 0b00000000000100101000001010010011;  // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1 -> x5=3
+    int num_instr = 5;
+    uint8_t  *code_region = new uint8_t[1024];
+    for (int i = 0; i < num_instr; ++i) {
+        code_region[4*i] = (uint8_t) ((instr_set[i] >> 24) & 0x000000ff);
+        code_region[4*i+1] = (uint8_t) ((instr_set[i] >> 16) & 0x000000ff);
+        code_region[4*i+2] = (uint8_t) ((instr_set[i] >> 8) & 0x000000ff);
+        code_region[4*i+3] = (uint8_t) ((instr_set[i]) & 0x000000ff);
+    }
+    cpu *new_instance = new cpu(code_region, num_instr*4);
+    new_instance -> run();
+    EXPECT_EQ((int) new_instance -> reg_peep(5), 3);
+}
+
+TEST_F(test_cpu, test_cpu_bge_loop){
+    uint32_t *instr_set = new uint32_t[10];
+    instr_set[0] = 0b00000000100000000000001100010011;  // ADDI imm=8, rs1=x0  rd=x6 -> x6 = 8
+    instr_set[1] = 0b00000000000100000000001010010011;  // ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1
+    instr_set[2] = 0b00000000000100101000001010010011;  // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1
+    instr_set[3] = 0b11111110010100110101111011100011;  // BGE offset=-4, rs2=x5, rs1=x6
+    instr_set[4] = 0b00000000000100101000001010010011;  // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1
+
+/*
+ * Explanation:
+ *      1: x6 = 8
+        2: x5 = 1
+        3: x5 = x5 + 1
+        4: if (x6 >= x5), branch back to instr 3, else go to next instr (x5 = 9)
+        5: x5 = x5 + 1 -> x5 = 10
+ */
+    int num_instr = 5;
+    uint8_t  *code_region = new uint8_t[1024];
+    for (int i = 0; i < num_instr; ++i) {
+        code_region[4*i] = (uint8_t) ((instr_set[i] >> 24) & 0x000000ff);
+        code_region[4*i+1] = (uint8_t) ((instr_set[i] >> 16) & 0x000000ff);
+        code_region[4*i+2] = (uint8_t) ((instr_set[i] >> 8) & 0x000000ff);
+        code_region[4*i+3] = (uint8_t) ((instr_set[i]) & 0x000000ff);
+    }
+    cpu *new_instance = new cpu(code_region, num_instr*4);
+    new_instance -> run();
+    EXPECT_EQ((int) new_instance -> reg_peep(6), 8);
+    EXPECT_EQ((int) new_instance -> reg_peep(5), 10);
+}

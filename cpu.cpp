@@ -13,7 +13,9 @@ cpu::cpu() {
 
 cpu::cpu(uint8_t *code, int n) {
     if (n <= 0){
-        std::cout << "CPU: initialization failed, as the number of instructions <= 0" << std::endl;
+        std::cout << "CPU: initialization failed." << std::endl <<
+                  "In parameter setting, the number of instructions should > 0" << std::endl;
+        std::runtime_error("CPU: initialization failed due to wrong parameter setting");
         return;
     }
     cpu_sram = new mem();
@@ -27,13 +29,14 @@ cpu::cpu(uint8_t *code, int n) {
 cpu::cpu(uint8_t *code, int n, uint32_t pc) {
     if (n <= 0){
         std::cout << "CPU: initialization failed, as the number of instructions <= 0" << std::endl;
+        std::runtime_error("CPU: initialization failed due to wrong parameter setting");
         return;
     }
     cpu_alu = new alu();
     cpu_regs = new reg();
     code_num = n;
     if ((pc & 0x00000003) != 0){
-        std::cout << "CPU: last 2 bits of init PC must be 00" << std::endl;
+        std::cout << "CPU: last 2 bits of init PC must be 00, now we start with PC = 0" << std::endl;
         cpu_regs -> set_reg(cpu_regs -> PC, 0);
         code_region = code;
     } else{
@@ -137,7 +140,6 @@ uint32_t cpu::get_branch_imm(uint32_t instr) {
     return imm;
 }
 
-
 void cpu::r_type_opcode_process(uint32_t instr) {
     uint8_t alu_opcode = combine_30_func3(instr);
     uint8_t rd = get_rd(instr);
@@ -173,8 +175,6 @@ void cpu::i_type_opcode_process(uint32_t instr) {
             in2 = get_imm12(instr);
             break;
     }
-
-
     uint32_t out = cpu_alu -> calculate(in1, in2, alu_opcode);
     cpu_regs -> set_reg(rd, out);
 }
@@ -187,7 +187,6 @@ void cpu::save_word(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
     uint32_t mem_address = cpu_alu -> calculate(base_address, imm, alu_opcode);
     cpu_sram -> set_mem(mem_address, src_val);
 }
-
 void cpu::save_byte(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
     uint8_t src_reg = get_rs2(instr);
     uint8_t base_reg = get_rs1(instr);
@@ -303,7 +302,7 @@ void cpu::b_type_opcode_process(uint32_t instr){
         case 0b000:
             // beq
             if (rs1_val == rs2_val) {
-                set_pc_val(pc_val + offset);
+                set_pc_val(pc_val + (int32_t) offset);
             } else{
                 pc_plus_4();
             }
@@ -311,7 +310,7 @@ void cpu::b_type_opcode_process(uint32_t instr){
         case 0b001:
             // bne
             if (rs1_val != rs2_val){
-                set_pc_val(pc_val + offset);
+                set_pc_val(pc_val + (int32_t) offset);
             } else{
                 pc_plus_4();
             }
@@ -319,7 +318,7 @@ void cpu::b_type_opcode_process(uint32_t instr){
         case 0b100:
             // blt
             if ((int32_t) rs1_val < (int32_t) rs2_val){
-                set_pc_val(pc_val + offset);
+                set_pc_val(pc_val + (int32_t) offset);
             } else{
                 pc_plus_4();
             }
@@ -327,7 +326,7 @@ void cpu::b_type_opcode_process(uint32_t instr){
         case 0b101:
             // bge
             if ((int32_t) rs1_val >= (int32_t) rs2_val){
-                set_pc_val(pc_val + offset);
+                set_pc_val(pc_val + (int32_t) offset);
             } else{
                 pc_plus_4();
             }
@@ -335,7 +334,7 @@ void cpu::b_type_opcode_process(uint32_t instr){
         case 0b110:
             // bltu
             if (rs1_val < rs2_val){
-                set_pc_val(pc_val + offset);
+                set_pc_val(pc_val + (int32_t) offset);
             } else{
                 pc_plus_4();
             }
@@ -343,7 +342,7 @@ void cpu::b_type_opcode_process(uint32_t instr){
         case 0b111:
             // bgeu
             if (rs1_val >= rs2_val){
-                set_pc_val(pc_val + offset);
+                set_pc_val(pc_val + (int32_t) offset);
             } else{
                 pc_plus_4();
             }
@@ -358,10 +357,19 @@ void cpu::b_type_opcode_process(uint32_t instr){
 }
 
 uint32_t cpu::get_pc_val(){
-    return cpu_regs->get_reg(cpu_regs->PC);
+    uint32_t pc_val  = cpu_regs->get_reg(cpu_regs->PC);
+    if ((pc_val & 0x00000003) != 0){
+        std::cout << "CPU: last 2 bits of init PC must be 00" << std::endl;
+        std::runtime_error("CPU: Processing Error with PC value");
+    }
+    return pc_val;
 }
 
 void cpu::set_pc_val(uint32_t new_pc_val){
+    if ((new_pc_val & 0x00000003) != 0){
+        std::cout << "CPU: last 2 bits of init PC must be 00" << std::endl;
+        std::runtime_error("CPU: Processing Error with PC value");
+    }
     cpu_regs ->set_reg(cpu_regs->PC, new_pc_val);
 }
 
@@ -373,6 +381,7 @@ void cpu::pc_plus_4(){
 
 void cpu::check_whether_end(){
     uint32_t pc_val = get_pc_val();
+//    std::cout << "PC val: " << pc_val << std::endl;
     if (pc_val >= code_num) {
         cpu_is_running = false;
     }
@@ -399,7 +408,7 @@ void cpu::process_instr(uint32_t instr) {
             pc_plus_4();
             break;
         case B:
-
+            b_type_opcode_process(instr);
             break;
 
         case J:

@@ -7,13 +7,11 @@ CMakeFiles/risc-simulator.dir/alu.cpp.o: ../alu.h
 CMakeFiles/risc-simulator.dir/cpu.cpp.o: ../alu.h
 CMakeFiles/risc-simulator.dir/cpu.cpp.o: ../cpu.cpp
 CMakeFiles/risc-simulator.dir/cpu.cpp.o: ../cpu.h
-CMakeFiles/risc-simulator.dir/cpu.cpp.o: ../ctr.h
 CMakeFiles/risc-simulator.dir/cpu.cpp.o: ../mem.h
 CMakeFiles/risc-simulator.dir/cpu.cpp.o: ../reg.h
 
 CMakeFiles/risc-simulator.dir/main.cpp.o: ../alu.h
 CMakeFiles/risc-simulator.dir/main.cpp.o: ../cpu.h
-CMakeFiles/risc-simulator.dir/main.cpp.o: ../ctr.h
 CMakeFiles/risc-simulator.dir/main.cpp.o: ../main.cpp
 CMakeFiles/risc-simulator.dir/main.cpp.o: ../mem.h
 CMakeFiles/risc-simulator.dir/main.cpp.o: ../reg.h

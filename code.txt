@@ -22,7 +22,31 @@ lb imm=19, rs1=x0  rd=x5 -> mem_addr = 0 + 19, load sram(19)'s byte to x5
 00000001001100000100001010000011
 
 
-loop instructions
+branching instructions
+000000000001 00000 000 00101 0010011  # ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1
+000000000001 00101 000 00101 0010011  # ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1 -> x5=2
+
+0 000000 00000 00101 000 0100 0 1100011 # BEQ offset=8, rs2=x0, rs1=x5
+000000000001 00101 000 00101 0010011  # ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1 -> x5=3
+
+write a loop for branching
+000000000100 00000 000 00110 0010011  # ADDI imm=8, rs1=x0  rd=x6 -> x6 = 8
 000000000001 00000 000 00101 0010011  # ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1
 000000000001 00101 000 00101 0010011  # ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1
+1 111111 00101 00110 101 1110 1 1100011 # BGE offset=-4, rs2=x5, rs1=x6
+000000000001 00101 000 00101 0010011  # ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1
+
+
+1: x6 = 8
+2: x5 = 1
+3: x5 = x5 + 1
+4: if (x6 >= x5), branch back to instr 3
+5: x5 = x5 + 1 -> x5 = 9
+
+
+
+
+
+
+
 
