@@ -8,25 +8,21 @@ on linux: https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-
 
 on mac: https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Mac
 
-
-
 Install Clion: https://www.jetbrains.com/clion/
 
 
 
 ##### Workflow
 
-add x10, x5, x6  			// x10 is rd, x5 is rs1, x6 is rs2, or you guys can set your own rules.
+```
+add x10, x5, x6
+```
 
-​						// However, if there is some universal rules for the riscv assembly
-
-​						// code, just write the assembly code according to these rules.						
+Here, `x10` is rd, `x5` is rs1, `x6` is rs2, or you guys can set your own rules. However, if there is some universal rules for the riscv assembly code, just write the assembly code according to these rules.						
 
 =>
 
-00000000011000101000010100110011		// one assembly code -> one line of strings in txt file
-
-
+00000000011000101000010100110011		
 
 Sample of exe.txt:
 
