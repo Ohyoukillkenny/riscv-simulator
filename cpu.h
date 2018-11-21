@@ -30,7 +30,7 @@ class cpu {
 
     /* methods for instruction processing:
      * combine_instr:   combine 4 bytes to a 32 bits instruction
-     * get_funct:    get funct7, bit position from 31 to 25
+     * get_funct:       get funct7, bit position from 31 to 25
      * get_opcode:      parse the opcode from the instruction
      * get_rd:          get rd register from the instruction, for save instruction, it is imm
      * get_func3:       get func3 from the instruction
@@ -40,7 +40,7 @@ class cpu {
      * */
     uint32_t combine_instr(uint8_t *start);
 
-    uint8_t get_funct(uint32_t instr);
+    uint8_t get_funct7(uint32_t instr);
 
     uint8_t get_opcode(uint32_t instr);
 
@@ -63,6 +63,9 @@ class cpu {
     void save_byte(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
     void save_hex(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
 
+    // function for L-type instructions
+
+
     // process the 32 bits instruction
     void process_instr(uint32_t instr);
     // R-type
@@ -71,10 +74,13 @@ class cpu {
     void i_type_opcode_process(uint32_t instr);
     // S-type
     void s_type_opcode_process(uint32_t instr);
+    // L-type
+    void l_type_opcode_process(uint32_t instr);
 
 
 
 public:
+    cpu();
     cpu(uint8_t *code);
     cpu(uint8_t *code, uint32_t pc);
     void run();

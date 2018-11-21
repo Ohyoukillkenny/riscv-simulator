@@ -3,6 +3,14 @@
 //
 
 #include "cpu.h"
+cpu::cpu() {
+    cpu_sram = new mem();
+    cpu_alu = new alu();
+    cpu_regs = new reg();
+    cpu_regs -> set_reg(cpu_regs -> PC, 0);
+}
+
+
 cpu::cpu(uint8_t *code) {
     cpu_sram = new mem();
     cpu_alu = new alu();
@@ -35,7 +43,7 @@ uint32_t cpu::combine_instr(uint8_t *start) {
     return  ret;
 }
 
-uint8_t get_funct7(uint32_t instr){
+uint8_t cpu::get_funct7(uint32_t instr){
     uint32_t ret;
     ret = (instr & 0b11111110000000000000000000000000) >> 25;
     return (uint8_t) ret;
@@ -54,8 +62,6 @@ uint8_t cpu::get_opcode(uint32_t instr) {
     return ret;
 }
 
-//0000000 01010   10011 000   10010 0110011
-//ADD     rs2=10 rs1=19 func3 rd=18 opcode
 
 uint8_t cpu::get_rd(uint32_t instr) {
     uint32_t ret;
@@ -211,16 +217,73 @@ void cpu::s_type_opcode_process(uint32_t instr){
     }
 }
 
+void cpu::l_type_opcode_process(uint32_t instr){
+    uint32_t  imm = get_imm12(instr);
+    uint8_t rd = get_rd(instr);
+    uint8_t base_reg = get_rs1(instr);
+    uint8_t alu_opcode = 0; // add
+    uint32_t base_address = cpu_regs -> get_reg(base_reg);
+    uint32_t mem_address = cpu_alu -> calculate(base_address, imm, alu_opcode);
+    uint8_t funct3 = get_func3(instr);
+    uint32_t mem_val;
+    uint16_t mem_hex_val;
+    uint8_t mem_byte_val;
+    switch (funct3){
+        case 0b000:
+            // LB
+            mem_byte_val = cpu_sram -> get_mem_byte(mem_address);
+            if (((mem_byte_val & 0b10000000) >> 7 ) == 1){
+                mem_val = 0xffffff00 | mem_byte_val;
+            } else{
+                mem_val = (uint32_t) mem_byte_val;
+            }
+            cpu_regs -> set_reg(rd, mem_val);
+            break;
+        case 0b001:
+            // LH
+            mem_hex_val = cpu_sram -> get_mem_byte(mem_address);
+            if (((mem_hex_val & 0b1000000000000000) >> 15 ) == 1){
+                mem_val = 0xffff0000 | mem_hex_val;
+            } else{
+                mem_val = (uint32_t) mem_hex_val;
+            }
+            cpu_regs -> set_reg(rd, mem_val);
+            break;
+        case 0b010:
+            mem_val = cpu_sram -> get_mem(mem_address);
+            cpu_regs -> set_reg(rd, mem_val);
+            // LW
+            break;
+        case 0b100:
+            // LBU
+            mem_byte_val = cpu_sram -> get_mem_byte(mem_address);
+            mem_val = (uint32_t) mem_byte_val;
+            cpu_regs -> set_reg(rd, mem_val);
+            break;
+        case 0b101:
+            // LHU
+            mem_hex_val = cpu_sram -> get_mem_byte(mem_address);
+            mem_val = (uint32_t) mem_hex_val;
+            cpu_regs -> set_reg(rd, mem_val);
+            break;
+        default:
+            std::bitset<32> y(funct3);
+            std::cout << "CPU Load: Funct3 "<< y << " is not supported by this simulator" << std::endl;
+            break;
+    }
+
+}
+
+
 void cpu::process_instr(uint32_t instr) {
     uint8_t opcode = get_opcode(instr);
     switch (opcode){
         case L:
+            l_type_opcode_process(instr);
             break;
-
         case S:
             s_type_opcode_process(instr);
             break;
-
         case R:
             r_type_opcode_process(instr);
             break;

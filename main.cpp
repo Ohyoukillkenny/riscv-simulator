@@ -52,7 +52,7 @@ int main() {
 //    instance -> print();
 
     uint8_t a = 0b10000001;
-    uint32_t b = a;
+    uint32_t b = 0xffffff84;
 
 
 //    uint32_t instr = 0b01000000101010011101100100110011;
