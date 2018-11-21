@@ -83,8 +83,8 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="emulator_ricv">
-				<Option output="/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/emulator_ricv" prefix_auto="0" extension_auto="0"/>
+			<Target title="risc-simulator">
+				<Option output="/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/risc-simulator" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -100,14 +100,14 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 emulator_ricv"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 risc-simulator"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="emulator_ricv/fast">
-				<Option output="/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/emulator_ricv" prefix_auto="0" extension_auto="0"/>
+			<Target title="risc-simulator/fast">
+				<Option output="/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/risc-simulator" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -123,7 +123,7 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 emulator_ricv/fast"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 risc-simulator/fast"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -132,38 +132,38 @@
 		</Build>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/alu.cpp">
 			<Option target="TestAll"/>
-			<Option target="emulator_ricv"/>
+			<Option target="risc-simulator"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/alu.h">
 			<Option target="TestAll"/>
-			<Option target="emulator_ricv"/>
+			<Option target="risc-simulator"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/cpu.cpp">
 			<Option target="TestAll"/>
-			<Option target="emulator_ricv"/>
+			<Option target="risc-simulator"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/cpu.h">
 			<Option target="TestAll"/>
-			<Option target="emulator_ricv"/>
+			<Option target="risc-simulator"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/main.cpp">
-			<Option target="emulator_ricv"/>
+			<Option target="risc-simulator"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/mem.cpp">
 			<Option target="TestAll"/>
-			<Option target="emulator_ricv"/>
+			<Option target="risc-simulator"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/mem.h">
 			<Option target="TestAll"/>
-			<Option target="emulator_ricv"/>
+			<Option target="risc-simulator"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/reg.cpp">
 			<Option target="TestAll"/>
-			<Option target="emulator_ricv"/>
+			<Option target="risc-simulator"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/reg.h">
 			<Option target="TestAll"/>
-			<Option target="emulator_ricv"/>
+			<Option target="risc-simulator"/>
 		</Unit>
 		<Unit filename="/Users/klk/CLionProjects/riscv-simulator/test/test-alu.cpp">
 			<Option target="TestAll"/>

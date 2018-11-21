@@ -69,5 +69,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/TestAll.dir/DependInfo.cmake"
-  "CMakeFiles/emulator_ricv.dir/DependInfo.cmake"
+  "CMakeFiles/risc-simulator.dir/DependInfo.cmake"
   )

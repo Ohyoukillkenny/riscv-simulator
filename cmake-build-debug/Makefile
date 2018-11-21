@@ -124,17 +124,17 @@ TestAll/fast:
 .PHONY : TestAll/fast
 
 #=============================================================================
-# Target rules for targets named emulator_ricv
+# Target rules for targets named risc-simulator
 
 # Build rule for target.
-emulator_ricv: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 emulator_ricv
-.PHONY : emulator_ricv
+risc-simulator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 risc-simulator
+.PHONY : risc-simulator
 
 # fast build rule for target.
-emulator_ricv/fast:
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/build
-.PHONY : emulator_ricv/fast
+risc-simulator/fast:
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/build
+.PHONY : risc-simulator/fast
 
 alu.o: alu.cpp.o
 
@@ -143,7 +143,7 @@ alu.o: alu.cpp.o
 # target to build an object file
 alu.cpp.o:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/alu.cpp.o
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/alu.cpp.o
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/alu.cpp.o
 .PHONY : alu.cpp.o
 
 alu.i: alu.cpp.i
@@ -153,7 +153,7 @@ alu.i: alu.cpp.i
 # target to preprocess a source file
 alu.cpp.i:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/alu.cpp.i
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/alu.cpp.i
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/alu.cpp.i
 .PHONY : alu.cpp.i
 
 alu.s: alu.cpp.s
@@ -163,7 +163,7 @@ alu.s: alu.cpp.s
 # target to generate assembly for a file
 alu.cpp.s:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/alu.cpp.s
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/alu.cpp.s
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/alu.cpp.s
 .PHONY : alu.cpp.s
 
 cpu.o: cpu.cpp.o
@@ -173,7 +173,7 @@ cpu.o: cpu.cpp.o
 # target to build an object file
 cpu.cpp.o:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/cpu.cpp.o
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/cpu.cpp.o
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/cpu.cpp.o
 .PHONY : cpu.cpp.o
 
 cpu.i: cpu.cpp.i
@@ -183,7 +183,7 @@ cpu.i: cpu.cpp.i
 # target to preprocess a source file
 cpu.cpp.i:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/cpu.cpp.i
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/cpu.cpp.i
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/cpu.cpp.i
 .PHONY : cpu.cpp.i
 
 cpu.s: cpu.cpp.s
@@ -193,7 +193,7 @@ cpu.s: cpu.cpp.s
 # target to generate assembly for a file
 cpu.cpp.s:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/cpu.cpp.s
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/cpu.cpp.s
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/cpu.cpp.s
 .PHONY : cpu.cpp.s
 
 main.o: main.cpp.o
@@ -202,7 +202,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -211,7 +211,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -220,7 +220,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 mem.o: mem.cpp.o
@@ -230,7 +230,7 @@ mem.o: mem.cpp.o
 # target to build an object file
 mem.cpp.o:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/mem.cpp.o
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/mem.cpp.o
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/mem.cpp.o
 .PHONY : mem.cpp.o
 
 mem.i: mem.cpp.i
@@ -240,7 +240,7 @@ mem.i: mem.cpp.i
 # target to preprocess a source file
 mem.cpp.i:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/mem.cpp.i
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/mem.cpp.i
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/mem.cpp.i
 .PHONY : mem.cpp.i
 
 mem.s: mem.cpp.s
@@ -250,7 +250,7 @@ mem.s: mem.cpp.s
 # target to generate assembly for a file
 mem.cpp.s:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/mem.cpp.s
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/mem.cpp.s
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/mem.cpp.s
 .PHONY : mem.cpp.s
 
 reg.o: reg.cpp.o
@@ -260,7 +260,7 @@ reg.o: reg.cpp.o
 # target to build an object file
 reg.cpp.o:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/reg.cpp.o
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/reg.cpp.o
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/reg.cpp.o
 .PHONY : reg.cpp.o
 
 reg.i: reg.cpp.i
@@ -270,7 +270,7 @@ reg.i: reg.cpp.i
 # target to preprocess a source file
 reg.cpp.i:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/reg.cpp.i
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/reg.cpp.i
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/reg.cpp.i
 .PHONY : reg.cpp.i
 
 reg.s: reg.cpp.s
@@ -280,7 +280,7 @@ reg.s: reg.cpp.s
 # target to generate assembly for a file
 reg.cpp.s:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/reg.cpp.s
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/reg.cpp.s
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/reg.cpp.s
 .PHONY : reg.cpp.s
 
 test/test-alu.o: test/test-alu.cpp.o
@@ -346,7 +346,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... TestAll"
-	@echo "... emulator_ricv"
+	@echo "... risc-simulator"
 	@echo "... alu.o"
 	@echo "... alu.i"
 	@echo "... alu.s"

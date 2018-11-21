@@ -1,5 +1,11 @@
 #### RISC-V Simulator
 
+##### Materials:
+
+RISC-V Instruction Manual: https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
+
+Teacher's slides: from slides 9 to 11
+
 ##### Configuration:
 
 Install cmake and gtest on windows: https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Windows

@@ -17,26 +17,27 @@ const uint8_t R = 0b00110011; // reg data processing, exp. add  rd, rs1, rs2
 const uint8_t S = 0b00100011; // save data,           exp. sw   rs1, rs2, imm
 const uint8_t L = 0b00000011; // load data,           exp. lw   rd,  rs1, imm
 const uint8_t I = 0b00010011; // imm data processing, exp. addi rd, rs1, imm
-const uint8_t BNE = 0b11100011; // bne                exp. bne  rs1, rs2, imm
-const uint8_t BEQ = 0b01100011; // beq                exp. beq  rs1, rs2, imm
+const uint8_t B = 0b01100011; // bne                exp. bne  rs1, rs2, imm
 const uint8_t J = 0b01101111; // jump, only JAL       exp. jal  rd, imm
 
 class cpu {
     reg *cpu_regs;
     alu *cpu_alu;
     mem *cpu_sram;
+    bool cpu_is_running = true;
     uint8_t *code_region;
-
+    int code_num;
 
     /* methods for instruction processing:
      * combine_instr:   combine 4 bytes to a 32 bits instruction
-     * get_funct:       get funct7, bit position from 31 to 25
+     * get_funct7:      get funct7, bit position from 31 to 25
      * get_opcode:      parse the opcode from the instruction
      * get_rd:          get rd register from the instruction, for save instruction, it is imm
      * get_func3:       get func3 from the instruction
      * get_rs1:         get rs1 register from the instruction
      * get_rs2:         get rs2 register from the instruction
      * combine_30_func3:      bit30 + [func3] -> 4 bits alu_op
+     * get_branch_imm:  get imm for B-type instructions, automatically set imm0 to be 0
      * */
     uint32_t combine_instr(uint8_t *start);
 
@@ -58,6 +59,8 @@ class cpu {
 
     uint32_t get_shamt(uint32_t instr);
 
+    uint32_t get_branch_imm(uint32_t instr);
+
     // function for S-type instructions
     void save_word(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
     void save_byte(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
@@ -76,14 +79,27 @@ class cpu {
     void s_type_opcode_process(uint32_t instr);
     // L-type
     void l_type_opcode_process(uint32_t instr);
+    // B-type
+    void b_type_opcode_process(uint32_t instr);
+
+    // get pc_val from PC register
+    uint32_t get_pc_val();
+    // set new pc_val to PC register
+    void set_pc_val(uint32_t new_pc_val);
+    // add 4 to value in the PC register
+    void pc_plus_4();
+
+    // check whether it is the end of the processing
+    void check_whether_end();
 
 
 
 public:
     cpu();
-    cpu(uint8_t *code);
-    cpu(uint8_t *code, uint32_t pc);
+    cpu(uint8_t *code, int code_num);
+    cpu(uint8_t *code, int code_num, uint32_t pc);
     void run();
+    void run_debug();
     /**
      * Prints cpu status
      */

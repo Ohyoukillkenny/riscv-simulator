@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/risc-simulator.dir/main.cpp.o CMakeFiles/risc-simulator.dir/alu.cpp.o CMakeFiles/risc-simulator.dir/reg.cpp.o CMakeFiles/risc-simulator.dir/cpu.cpp.o CMakeFiles/risc-simulator.dir/mem.cpp.o  -o risc-simulator 

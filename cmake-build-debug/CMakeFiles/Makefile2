@@ -102,39 +102,39 @@ clean: CMakeFiles/TestAll.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/emulator_ricv.dir
+# Target rules for target CMakeFiles/risc-simulator.dir
 
 # All Build rule for target.
-CMakeFiles/emulator_ricv.dir/all:
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/depend
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=8,9,10,11,12,13 "Built target emulator_ricv"
-.PHONY : CMakeFiles/emulator_ricv.dir/all
+CMakeFiles/risc-simulator.dir/all:
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/depend
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=8,9,10,11,12,13 "Built target risc-simulator"
+.PHONY : CMakeFiles/risc-simulator.dir/all
 
 # Include target in all.
-all: CMakeFiles/emulator_ricv.dir/all
+all: CMakeFiles/risc-simulator.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/emulator_ricv.dir/rule: cmake_check_build_system
+CMakeFiles/risc-simulator.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/emulator_ricv.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/risc-simulator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/emulator_ricv.dir/rule
+.PHONY : CMakeFiles/risc-simulator.dir/rule
 
 # Convenience name for target.
-emulator_ricv: CMakeFiles/emulator_ricv.dir/rule
+risc-simulator: CMakeFiles/risc-simulator.dir/rule
 
-.PHONY : emulator_ricv
-
-# clean rule for target.
-CMakeFiles/emulator_ricv.dir/clean:
-	$(MAKE) -f CMakeFiles/emulator_ricv.dir/build.make CMakeFiles/emulator_ricv.dir/clean
-.PHONY : CMakeFiles/emulator_ricv.dir/clean
+.PHONY : risc-simulator
 
 # clean rule for target.
-clean: CMakeFiles/emulator_ricv.dir/clean
+CMakeFiles/risc-simulator.dir/clean:
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/clean
+.PHONY : CMakeFiles/risc-simulator.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/risc-simulator.dir/clean
 
 .PHONY : clean
 

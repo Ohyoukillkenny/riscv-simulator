@@ -10,6 +10,10 @@
 iostream
 -
 
+/Users/klk/CLionProjects/riscv-simulator/cpu.cpp
+cpu.h
+/Users/klk/CLionProjects/riscv-simulator/cpu.h
+
 /Users/klk/CLionProjects/riscv-simulator/cpu.h
 cstdint
 -
@@ -27,6 +31,12 @@ mem.h
 /Users/klk/CLionProjects/riscv-simulator/ctr.h
 iostream
 -
+
+/Users/klk/CLionProjects/riscv-simulator/mem.cpp
+iostream
+-
+mem.h
+/Users/klk/CLionProjects/riscv-simulator/mem.h
 
 /Users/klk/CLionProjects/riscv-simulator/mem.h
 cstdint

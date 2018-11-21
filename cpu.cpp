@@ -11,24 +11,32 @@ cpu::cpu() {
 }
 
 
-cpu::cpu(uint8_t *code) {
+cpu::cpu(uint8_t *code, int n) {
+    if (n <= 0){
+        std::cout << "CPU: initialization failed, as the number of instructions <= 0" << std::endl;
+        return;
+    }
     cpu_sram = new mem();
     cpu_alu = new alu();
     cpu_regs = new reg();
     cpu_regs -> set_reg(cpu_regs -> PC, 0);
     code_region = code;
+    code_num = n;
 }
 
-cpu::cpu(uint8_t *code, uint32_t pc) {
+cpu::cpu(uint8_t *code, int n, uint32_t pc) {
+    if (n <= 0){
+        std::cout << "CPU: initialization failed, as the number of instructions <= 0" << std::endl;
+        return;
+    }
+    cpu_alu = new alu();
+    cpu_regs = new reg();
+    code_num = n;
     if ((pc & 0x00000003) != 0){
         std::cout << "CPU: last 2 bits of init PC must be 00" << std::endl;
-        cpu_alu = new alu();
-        cpu_regs = new reg();
         cpu_regs -> set_reg(cpu_regs -> PC, 0);
         code_region = code;
     } else{
-        cpu_alu = new alu();
-        cpu_regs = new reg();
         cpu_regs -> set_reg(cpu_regs -> PC, pc);
         code_region = code + pc;
     }
@@ -51,14 +59,7 @@ uint8_t cpu::get_funct7(uint32_t instr){
 
 uint8_t cpu::get_opcode(uint32_t instr) {
     uint8_t ret = 0;
-    ret = instr & 0x0000007f;
-    if (ret == 0b01100011){
-        // Branch
-        if ((instr & 0x00001000)>>12 == 1){
-            // 12 th bit is 1 --> bne
-            ret = 0b11100011;
-        }
-    }
+    ret = (uint8_t) instr & 0x0000007f;
     return ret;
 }
 
@@ -118,6 +119,22 @@ uint8_t cpu::combine_30_func3(uint32_t instr) {
     } else{
         return func3;
     }
+}
+
+uint32_t cpu::get_branch_imm(uint32_t instr) {
+    uint32_t imm = 0;
+    uint8_t imm4to1_11 = get_rd(instr);
+    uint8_t imm12_10to5 = get_funct7(instr);
+    uint32_t imm_0 = 0;
+    uint32_t imm_11 = (imm4to1_11 & 0b00000001) << 11;
+    uint32_t imm_12 = (imm12_10to5 & 0b01000000) << 6;
+    uint32_t imm_10to5 = (imm12_10to5 & 0b00111111) << 5;
+    uint32_t imm4to1 = (imm4to1_11 & 0b00011110);
+    imm = imm_12 | imm_11 | imm_10to5 | imm4to1 | imm_0;
+    if ((imm_12 >> 12) != 0){
+        imm = imm | 0xffffe000;  // add sign extension
+    }
+    return imm;
 }
 
 
@@ -274,27 +291,114 @@ void cpu::l_type_opcode_process(uint32_t instr){
 
 }
 
+void cpu::b_type_opcode_process(uint32_t instr){
+    uint8_t funct3 = get_func3(instr);
+    uint32_t offset = get_branch_imm(instr);
+    uint8_t rs1 = get_rs1(instr);
+    uint8_t rs2 = get_rs2(instr);
+    uint32_t rs1_val = cpu_regs -> get_reg(rs1);
+    uint32_t rs2_val = cpu_regs -> get_reg(rs2);
+    uint32_t pc_val = get_pc_val();
+    switch (funct3){
+        case 0b000:
+            // beq
+            if (rs1_val == rs2_val) {
+                set_pc_val(pc_val + offset);
+            } else{
+                pc_plus_4();
+            }
+            break;
+        case 0b001:
+            // bne
+            if (rs1_val != rs2_val){
+                set_pc_val(pc_val + offset);
+            } else{
+                pc_plus_4();
+            }
+            break;
+        case 0b100:
+            // blt
+            if ((int32_t) rs1_val < (int32_t) rs2_val){
+                set_pc_val(pc_val + offset);
+            } else{
+                pc_plus_4();
+            }
+            break;
+        case 0b101:
+            // bge
+            if ((int32_t) rs1_val >= (int32_t) rs2_val){
+                set_pc_val(pc_val + offset);
+            } else{
+                pc_plus_4();
+            }
+            break;
+        case 0b110:
+            // bltu
+            if (rs1_val < rs2_val){
+                set_pc_val(pc_val + offset);
+            } else{
+                pc_plus_4();
+            }
+            break;
+        case 0b111:
+            // bgeu
+            if (rs1_val >= rs2_val){
+                set_pc_val(pc_val + offset);
+            } else{
+                pc_plus_4();
+            }
+            break;
+        default:
+            std::bitset<32> y(funct3);
+            std::cout << "CPU Branch: Funct3 "<< y << " is not supported by this simulator" << std::endl;
+            std::runtime_error("CPU Branch Processing: Instruction cannot be recognized. ");
+            break;
+    }
+
+}
+
+uint32_t cpu::get_pc_val(){
+    return cpu_regs->get_reg(cpu_regs->PC);
+}
+
+void cpu::set_pc_val(uint32_t new_pc_val){
+    cpu_regs ->set_reg(cpu_regs->PC, new_pc_val);
+}
+
+void cpu::pc_plus_4(){
+    uint32_t pc_val = get_pc_val();
+    pc_val += 4;
+    set_pc_val(pc_val);
+}
+
+void cpu::check_whether_end(){
+    uint32_t pc_val = get_pc_val();
+    if (pc_val >= code_num) {
+        cpu_is_running = false;
+    }
+}
+
 
 void cpu::process_instr(uint32_t instr) {
     uint8_t opcode = get_opcode(instr);
     switch (opcode){
         case L:
             l_type_opcode_process(instr);
+            pc_plus_4();
             break;
         case S:
             s_type_opcode_process(instr);
+            pc_plus_4();
             break;
         case R:
             r_type_opcode_process(instr);
+            pc_plus_4();
             break;
         case I:
             i_type_opcode_process(instr);
+            pc_plus_4();
             break;
-        case BEQ:
-
-            break;
-
-        case BNE:
+        case B:
 
             break;
 
@@ -304,17 +408,40 @@ void cpu::process_instr(uint32_t instr) {
         default:
             std::bitset<32> y(opcode);
             std::cout << "CPU: opcode "<< y << " is not supported by this simulator" << std::endl;
+            std::runtime_error("CPU process_instr: Instruction cannot be recognized.");
             break;
     }
 }
 
+void cpu::run_debug() {
+    while (cpu_is_running) {
+        uint32_t instr;
+        uint32_t pc_val = get_pc_val();
+        if ((pc_val & 0x00000003) != 0) {
+            std::runtime_error("CPU Running: last 2 bits of init PC must be 00");
+        }
+        instr = combine_instr(code_region + pc_val);
+
+        std::bitset<32> y(instr);
+        std::cout << "instr: " << y << std::endl;
+        process_instr(instr);
+        print();
+        check_whether_end();
+    }
+    // x2 = 4, x5 = -49, x18 = -49, sram[19] = 4
+}
+
 void cpu::run() {
-    process_instr(0b00000000010000000000000100010011);  // ADDI imm=4, rs1=x0  rd=x2 -> x2 = 4
-    process_instr(0b00000000000100000000001010010011);  // ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1
-    process_instr(0b00000000001000101010100100100011);  // SW  offset1=0, src=x2, base=x5, offset2=18 -> save 4 to mem(1+18)
-    process_instr(0b11111100111000000000001010010011);  // addi imm=-50 rs1=x0  rd=x5
-    process_instr(0b00000000000100101000001010010011);  // ADDI imm=1   rs1=x5  rd=x5
-    process_instr(0b00000000000000101000100100110011);  // ADD  rs2=0   rs1=x5  rd=18
+    while (cpu_is_running) {
+        uint32_t instr;
+        uint32_t pc_val = get_pc_val();
+        if ((pc_val & 0x00000003) != 0) {
+            std::runtime_error("CPU Running: last 2 bits of init PC must be 00");
+        }
+        instr = combine_instr(code_region + pc_val);
+        process_instr(instr);
+        check_whether_end();
+    }
     // x2 = 4, x5 = -49, x18 = -49, sram[19] = 4
 }
 
@@ -324,9 +451,9 @@ void cpu::print() {
     for(int i = 0; i < 33; ++i) {
         if (i == 32){
             std::bitset<32> bin(cpu_regs -> get_reg(i));
-            std::cout << "PC  register has value : 0xb" << bin << std::endl;
+            std::cout << "PC has value : 0xb" << bin << std::endl;
         } else{
-            std::cout << "x" + std::to_string(i) + " register has value : " << (int) cpu_regs -> get_reg(i) << std::endl;
+            std::cout << "x" + std::to_string(i) + " : " << (int) cpu_regs -> get_reg(i) << std::endl;
         }
     }
 }
