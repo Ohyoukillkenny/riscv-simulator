@@ -3,9 +3,9 @@
 #include <fstream>
 #include <vector>
 #include <queue>
-#include "alu.h"
-#include "reg.h"
-#include "cpu.h"
+#include "cpu/alu.h"
+#include "cpu/reg.h"
+#include "cpu/cpu.h"
 
 
 uint8_t get_rd(uint32_t instr) {

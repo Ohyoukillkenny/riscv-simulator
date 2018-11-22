@@ -13,7 +13,7 @@ find_package(GTest REQUIRED)
 include_directories("${PROJECT_SOURCE_DIR}/test")
 
 # create the main app
-set(SOURCE_FILES alu.cpp alu.h reg.cpp reg.h cpu.cpp cpu.h mem.cpp mem.h)
+set(SOURCE_FILES cpu/alu.cpp cpu/alu.h cpu/reg.cpp cpu/reg.h cpu/cpu.cpp cpu/cpu.h mem/mem.cpp mem/mem.h)
 add_executable(risc-simulator main.cpp ${SOURCE_FILES})
 
 # create the alu test

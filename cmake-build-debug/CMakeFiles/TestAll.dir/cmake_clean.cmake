@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/TestAll.dir/test/test-alu.cpp.o"
-  "CMakeFiles/TestAll.dir/alu.cpp.o"
-  "CMakeFiles/TestAll.dir/reg.cpp.o"
-  "CMakeFiles/TestAll.dir/cpu.cpp.o"
-  "CMakeFiles/TestAll.dir/mem.cpp.o"
+  "CMakeFiles/TestAll.dir/cpu/alu.cpp.o"
+  "CMakeFiles/TestAll.dir/cpu/reg.cpp.o"
+  "CMakeFiles/TestAll.dir/cpu/cpu.cpp.o"
+  "CMakeFiles/TestAll.dir/mem/mem.cpp.o"
   "CMakeFiles/TestAll.dir/test/test-cpu.cpp.o"
   "TestAll.pdb"
   "TestAll"

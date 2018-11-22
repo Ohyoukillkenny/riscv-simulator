@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/klk/CLionProjects/riscv-simulator/alu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/alu.cpp.o"
-  "/Users/klk/CLionProjects/riscv-simulator/cpu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/cpu.cpp.o"
-  "/Users/klk/CLionProjects/riscv-simulator/mem.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/mem.cpp.o"
-  "/Users/klk/CLionProjects/riscv-simulator/reg.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/reg.cpp.o"
+  "/Users/klk/CLionProjects/riscv-simulator/cpu/alu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/cpu/alu.cpp.o"
+  "/Users/klk/CLionProjects/riscv-simulator/cpu/cpu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/cpu/cpu.cpp.o"
+  "/Users/klk/CLionProjects/riscv-simulator/cpu/reg.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/cpu/reg.cpp.o"
+  "/Users/klk/CLionProjects/riscv-simulator/mem/mem.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/mem/mem.cpp.o"
   "/Users/klk/CLionProjects/riscv-simulator/test/test-alu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/test/test-alu.cpp.o"
   "/Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp" "/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles/TestAll.dir/test/test-cpu.cpp.o"
   )

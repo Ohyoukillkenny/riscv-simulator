@@ -6,7 +6,7 @@
 #include <vector>
 #include "reg.h"
 #include "alu.h"
-#include "mem.h"
+#include "../mem/mem.h"
 #ifndef RISCV_SIMULATOR_CPU_H
 #define RISCV_SIMULATOR_CPU_H
 

@@ -70,74 +70,74 @@ CMakeFiles/risc-simulator.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/risc-simulator.dir/main.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/main.cpp -o CMakeFiles/risc-simulator.dir/main.cpp.s
 
-CMakeFiles/risc-simulator.dir/alu.cpp.o: CMakeFiles/risc-simulator.dir/flags.make
-CMakeFiles/risc-simulator.dir/alu.cpp.o: ../alu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/risc-simulator.dir/alu.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/risc-simulator.dir/alu.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/alu.cpp
+CMakeFiles/risc-simulator.dir/cpu/alu.cpp.o: CMakeFiles/risc-simulator.dir/flags.make
+CMakeFiles/risc-simulator.dir/cpu/alu.cpp.o: ../cpu/alu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/risc-simulator.dir/cpu/alu.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/risc-simulator.dir/cpu/alu.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/cpu/alu.cpp
 
-CMakeFiles/risc-simulator.dir/alu.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/risc-simulator.dir/alu.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/alu.cpp > CMakeFiles/risc-simulator.dir/alu.cpp.i
+CMakeFiles/risc-simulator.dir/cpu/alu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/risc-simulator.dir/cpu/alu.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/cpu/alu.cpp > CMakeFiles/risc-simulator.dir/cpu/alu.cpp.i
 
-CMakeFiles/risc-simulator.dir/alu.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/risc-simulator.dir/alu.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/alu.cpp -o CMakeFiles/risc-simulator.dir/alu.cpp.s
+CMakeFiles/risc-simulator.dir/cpu/alu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/risc-simulator.dir/cpu/alu.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/cpu/alu.cpp -o CMakeFiles/risc-simulator.dir/cpu/alu.cpp.s
 
-CMakeFiles/risc-simulator.dir/reg.cpp.o: CMakeFiles/risc-simulator.dir/flags.make
-CMakeFiles/risc-simulator.dir/reg.cpp.o: ../reg.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/risc-simulator.dir/reg.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/risc-simulator.dir/reg.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/reg.cpp
+CMakeFiles/risc-simulator.dir/cpu/reg.cpp.o: CMakeFiles/risc-simulator.dir/flags.make
+CMakeFiles/risc-simulator.dir/cpu/reg.cpp.o: ../cpu/reg.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/risc-simulator.dir/cpu/reg.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/risc-simulator.dir/cpu/reg.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/cpu/reg.cpp
 
-CMakeFiles/risc-simulator.dir/reg.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/risc-simulator.dir/reg.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/reg.cpp > CMakeFiles/risc-simulator.dir/reg.cpp.i
+CMakeFiles/risc-simulator.dir/cpu/reg.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/risc-simulator.dir/cpu/reg.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/cpu/reg.cpp > CMakeFiles/risc-simulator.dir/cpu/reg.cpp.i
 
-CMakeFiles/risc-simulator.dir/reg.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/risc-simulator.dir/reg.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/reg.cpp -o CMakeFiles/risc-simulator.dir/reg.cpp.s
+CMakeFiles/risc-simulator.dir/cpu/reg.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/risc-simulator.dir/cpu/reg.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/cpu/reg.cpp -o CMakeFiles/risc-simulator.dir/cpu/reg.cpp.s
 
-CMakeFiles/risc-simulator.dir/cpu.cpp.o: CMakeFiles/risc-simulator.dir/flags.make
-CMakeFiles/risc-simulator.dir/cpu.cpp.o: ../cpu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/risc-simulator.dir/cpu.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/risc-simulator.dir/cpu.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/cpu.cpp
+CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.o: CMakeFiles/risc-simulator.dir/flags.make
+CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.o: ../cpu/cpu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/cpu/cpu.cpp
 
-CMakeFiles/risc-simulator.dir/cpu.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/risc-simulator.dir/cpu.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/cpu.cpp > CMakeFiles/risc-simulator.dir/cpu.cpp.i
+CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/cpu/cpu.cpp > CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.i
 
-CMakeFiles/risc-simulator.dir/cpu.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/risc-simulator.dir/cpu.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/cpu.cpp -o CMakeFiles/risc-simulator.dir/cpu.cpp.s
+CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/cpu/cpu.cpp -o CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.s
 
-CMakeFiles/risc-simulator.dir/mem.cpp.o: CMakeFiles/risc-simulator.dir/flags.make
-CMakeFiles/risc-simulator.dir/mem.cpp.o: ../mem.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/risc-simulator.dir/mem.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/risc-simulator.dir/mem.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/mem.cpp
+CMakeFiles/risc-simulator.dir/mem/mem.cpp.o: CMakeFiles/risc-simulator.dir/flags.make
+CMakeFiles/risc-simulator.dir/mem/mem.cpp.o: ../mem/mem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/risc-simulator.dir/mem/mem.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/risc-simulator.dir/mem/mem.cpp.o -c /Users/klk/CLionProjects/riscv-simulator/mem/mem.cpp
 
-CMakeFiles/risc-simulator.dir/mem.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/risc-simulator.dir/mem.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/mem.cpp > CMakeFiles/risc-simulator.dir/mem.cpp.i
+CMakeFiles/risc-simulator.dir/mem/mem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/risc-simulator.dir/mem/mem.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/klk/CLionProjects/riscv-simulator/mem/mem.cpp > CMakeFiles/risc-simulator.dir/mem/mem.cpp.i
 
-CMakeFiles/risc-simulator.dir/mem.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/risc-simulator.dir/mem.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/mem.cpp -o CMakeFiles/risc-simulator.dir/mem.cpp.s
+CMakeFiles/risc-simulator.dir/mem/mem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/risc-simulator.dir/mem/mem.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/klk/CLionProjects/riscv-simulator/mem/mem.cpp -o CMakeFiles/risc-simulator.dir/mem/mem.cpp.s
 
 # Object files for target risc-simulator
 risc__simulator_OBJECTS = \
 "CMakeFiles/risc-simulator.dir/main.cpp.o" \
-"CMakeFiles/risc-simulator.dir/alu.cpp.o" \
-"CMakeFiles/risc-simulator.dir/reg.cpp.o" \
-"CMakeFiles/risc-simulator.dir/cpu.cpp.o" \
-"CMakeFiles/risc-simulator.dir/mem.cpp.o"
+"CMakeFiles/risc-simulator.dir/cpu/alu.cpp.o" \
+"CMakeFiles/risc-simulator.dir/cpu/reg.cpp.o" \
+"CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.o" \
+"CMakeFiles/risc-simulator.dir/mem/mem.cpp.o"
 
 # External object files for target risc-simulator
 risc__simulator_EXTERNAL_OBJECTS =
 
 risc-simulator: CMakeFiles/risc-simulator.dir/main.cpp.o
-risc-simulator: CMakeFiles/risc-simulator.dir/alu.cpp.o
-risc-simulator: CMakeFiles/risc-simulator.dir/reg.cpp.o
-risc-simulator: CMakeFiles/risc-simulator.dir/cpu.cpp.o
-risc-simulator: CMakeFiles/risc-simulator.dir/mem.cpp.o
+risc-simulator: CMakeFiles/risc-simulator.dir/cpu/alu.cpp.o
+risc-simulator: CMakeFiles/risc-simulator.dir/cpu/reg.cpp.o
+risc-simulator: CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.o
+risc-simulator: CMakeFiles/risc-simulator.dir/mem/mem.cpp.o
 risc-simulator: CMakeFiles/risc-simulator.dir/build.make
 risc-simulator: CMakeFiles/risc-simulator.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/klk/CLionProjects/riscv-simulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable risc-simulator"

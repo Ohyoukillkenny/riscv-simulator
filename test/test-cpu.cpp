@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../cpu.h"
+#include "../cpu/cpu.h"
 
 class test_cpu: public testing::Test {
 public:

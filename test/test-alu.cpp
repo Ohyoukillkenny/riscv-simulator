@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../alu.h"
+#include "../cpu/alu.h"
 
 class test_alu: public testing::Test {
 public:
