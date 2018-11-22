@@ -36,6 +36,20 @@ uint32_t get_branch_imm(uint32_t instr) {
     return imm;
 }
 
+uint32_t get_jal_offset(uint32_t instr) {
+    uint32_t offset = 0;
+    uint32_t offset0 = 0;
+    uint32_t offset20 = (instr & 0x80000000) >> 11;
+    uint32_t offset10to1 = (instr & 0b01111111111000000000000000000000) >> 20;
+    uint32_t offset11 =    (instr & 0b00000000000100000000000000000000) >> 9;
+    uint32_t offset19to12= (instr & 0b00000000000011111111000000000000);
+    offset = offset20 | offset19to12 | offset11 | offset10to1 | offset0;
+    if ((offset20 >> 20) != 0){
+        offset = offset | 0xfff00000; // add sign extension
+    }
+    return offset;
+}
+
 
 int main() {
     int code_size = 1024;
@@ -57,10 +71,11 @@ int main() {
     std::string temp;
     uint8_t code;
     while (std::getline(code_file, temp)) {
+        std::string code_string = temp.substr(0,32);
         for (int i = 0; i < 4; ++i) {
             code = 0b00000000;
             for (int j = 0; j < 8; ++j){
-                if (temp[8*i+j] - '0' == 0){
+                if (code_string[8*i+j] - '0' == 0){
                     continue;
                 } else {
                     code = code | (uint8_t) (1 << (7-j));
@@ -76,21 +91,13 @@ int main() {
     cpu *instance = new cpu(code_region, num);
     instance -> run();
     instance -> print();
-    std::cout << instance -> mem_peep(19) << std::endl;
 
 
 
-//    uint32_t instr = 0b11111110010100110101111011100011;
-//    uint32_t code = get_branch_imm(instr);
+//    uint32_t code = 0xfffffff0;
 //    std::cout << (int) code << std::endl;
 //    std::bitset<32> y(code);
 //    std::cout << y << std::endl;
-
-//    uint8_t a = 0b10000001;
-//    uint32_t b = 0xffffff84;
-//    std::cout << (int)b << std::endl;
-//    std::bitset<32> y(b);
-//    std::cout << y;
 
     return 0;
 }

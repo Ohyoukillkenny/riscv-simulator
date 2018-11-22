@@ -140,6 +140,20 @@ uint32_t cpu::get_branch_imm(uint32_t instr) {
     return imm;
 }
 
+uint32_t cpu::get_jal_offset(uint32_t instr) {
+    uint32_t offset = 0;
+    uint32_t offset0 = 0;
+    uint32_t offset20 = (instr & 0x80000000) >> 11;
+    uint32_t offset10to1 = (instr & 0b01111111111000000000000000000000) >> 20;
+    uint32_t offset11 =    (instr & 0b00000000000100000000000000000000) >> 9;
+    uint32_t offset19to12= (instr & 0b00000000000011111111000000000000);
+    offset = offset20 | offset19to12 | offset11 | offset10to1 | offset0;
+    if ((offset20 >> 20) != 0){
+        offset = offset | 0xfff00000; // add sign extension
+    }
+    return offset;
+}
+
 void cpu::r_type_opcode_process(uint32_t instr) {
     uint8_t alu_opcode = combine_30_func3(instr);
     uint8_t rd = get_rd(instr);
@@ -356,6 +370,29 @@ void cpu::b_type_opcode_process(uint32_t instr){
 
 }
 
+void cpu::jal_opcode_process(uint32_t instr) {
+    uint8_t rd = get_rd(instr);
+    uint32_t pc_val = get_pc_val();
+    cpu_regs -> set_reg(rd, pc_val + 4);
+    uint32_t offset = get_jal_offset(instr);
+    set_pc_val(pc_val + (int32_t) offset);
+}
+
+void cpu::jalr_opcode_process(uint32_t instr) {
+    uint32_t imm = get_imm12(instr);
+    imm = imm & 0xfffffffe; // set the least-significant bit of the result to zero
+    if ((imm >> 12) != 0){
+        imm = imm | 0xfffff000; // add sign extension
+    }
+    uint8_t rs1 = get_rs1(instr);
+    uint32_t rs1_val = cpu_regs -> get_reg(rs1);
+    int32_t offset = ((int32_t)rs1_val) + ((int32_t)imm);
+    uint8_t rd = get_rd(instr);
+    uint32_t pc_val = get_pc_val();
+    cpu_regs -> set_reg(rd, pc_val + 4);
+    set_pc_val(pc_val + offset);
+}
+
 uint32_t cpu::get_pc_val(){
     uint32_t pc_val  = cpu_regs->get_reg(cpu_regs->PC);
     if ((pc_val & 0x00000003) != 0){
@@ -411,7 +448,12 @@ void cpu::process_instr(uint32_t instr) {
             b_type_opcode_process(instr);
             break;
 
-        case J:
+        case JAL:
+            jal_opcode_process(instr);
+            break;
+
+        case JALR:
+            jalr_opcode_process(instr);
             break;
 
         default:

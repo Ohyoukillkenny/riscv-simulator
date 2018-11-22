@@ -187,3 +187,67 @@ TEST_F(test_cpu, test_cpu_bge_loop){
     EXPECT_EQ((int) new_instance -> reg_peep(6), 8);
     EXPECT_EQ((int) new_instance -> reg_peep(5), 10);
 }
+
+TEST_F(test_cpu, test_cpu_jal_loop){
+    uint32_t *instr_set = new uint32_t[10];
+    instr_set[0] = 0b00000000100000000000001100010011;    // ADDI imm=8, rs1=x0  rd=x6 -> x6 = 8,           pc = 0
+    instr_set[1] = 0b00000000000100000000001010010011;    // ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1,           pc = 4
+    instr_set[2] = 0b00000000000100101000001010010011;    // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1,      pc = 8
+    instr_set[3] = 0b00000000011000101000010001100011;    // BEQ  offset= 8, rs2=x6, rs1=x5                 pc = 12,  next_pc = 16 or 20
+    instr_set[4] = 0b11111111100111111111000011101111;    // JAL  offset=-8, rd=x1 -> x1 = pc+4 = 20,       pc = 16,  next_pc = pc-8
+    instr_set[5] = 0b00000000000100101000001010010011;    // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1,      pc = 20
+    int num_instr = 6;
+    uint8_t  *code_region = new uint8_t[1024];
+    for (int i = 0; i < num_instr; ++i) {
+        code_region[4*i] = (uint8_t) ((instr_set[i] >> 24) & 0x000000ff);
+        code_region[4*i+1] = (uint8_t) ((instr_set[i] >> 16) & 0x000000ff);
+        code_region[4*i+2] = (uint8_t) ((instr_set[i] >> 8) & 0x000000ff);
+        code_region[4*i+3] = (uint8_t) ((instr_set[i]) & 0x000000ff);
+    }
+    cpu *new_instance = new cpu(code_region, num_instr*4);
+    new_instance -> run();
+    EXPECT_EQ((int) new_instance -> reg_peep(6), 8);
+    EXPECT_EQ((int) new_instance -> reg_peep(1), 20);
+    EXPECT_EQ((int) new_instance -> reg_peep(5), 9);
+
+//    1: x6 = 8
+//    2: x5 = 1
+//    3: x5 = x5 + 1
+//    4: if (x5 == x6), branch to instr 6, else go to instr 5
+//    5: jump back to instr 3
+//    6: x5 = x5 + 1
+//
+//    get x6 = 8, x5 = 9, x1 = 20
+}
+
+TEST_F(test_cpu, test_cpu_jalr_loop) {
+    uint32_t *instr_set = new uint32_t[10];
+    instr_set[0] = 0b00000000100000000000001100010011;    // ADDI imm=8, rs1=x0  rd=x6 -> x6 = 8,           pc = 0
+    instr_set[1] = 0b00000000000100000000001010010011;    // ADDI imm=1, rs1=x0  rd=x5 -> x5 = 1,           pc = 4
+    instr_set[2] = 0b00000000000100101000001010010011;    // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1,      pc = 8
+    instr_set[3] = 0b00000000011000101000010001100011;    // BEQ  offset= 8, rs2=x6, rs1=x5                 pc = 12,  next_pc = 16 or 20
+    instr_set[4] = 0b11111111000100110000000011100111;    // JALR imm=-16, rs1=x6, rd=x1 -> x1 = pc+4 = 20, pc = 16,  next_pc = pc -16+8 = pc-8
+    instr_set[5] = 0b00000000000100101000001010010011;    // ADDI imm=1, rs1=x5  rd=x5 -> x5 = x5 + 1,      pc = 20
+    int num_instr = 6;
+    uint8_t  *code_region = new uint8_t[1024];
+    for (int i = 0; i < num_instr; ++i) {
+        code_region[4*i] = (uint8_t) ((instr_set[i] >> 24) & 0x000000ff);
+        code_region[4*i+1] = (uint8_t) ((instr_set[i] >> 16) & 0x000000ff);
+        code_region[4*i+2] = (uint8_t) ((instr_set[i] >> 8) & 0x000000ff);
+        code_region[4*i+3] = (uint8_t) ((instr_set[i]) & 0x000000ff);
+    }
+    cpu *new_instance = new cpu(code_region, num_instr*4);
+    new_instance -> run();
+    EXPECT_EQ((int) new_instance -> reg_peep(6), 8);
+    EXPECT_EQ((int) new_instance -> reg_peep(1), 20);
+    EXPECT_EQ((int) new_instance -> reg_peep(5), 9);
+
+//    1: x6 = 8
+//    2: x5 = 1
+//    3: x5 = x5 + 1
+//    4: if (x5 == x6), branch to instr 6, else go to instr 5
+//    5: jump back to instr 3
+//    6: x5 = x5 + 1
+//
+//    get x6 = 8, x5 = 9, x1 = 20
+}

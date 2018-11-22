@@ -14,6 +14,7 @@ reg::reg() {
 uint32_t reg::get_reg(uint8_t addr){
     if (addr > 32){
         std::cout << "Reg: invalid register address" << std::endl;
+        std::runtime_error("Reg: invalid address of register");
         return 0;
     }
     return regs[addr];
@@ -22,6 +23,7 @@ uint32_t reg::get_reg(uint8_t addr){
 uint16_t reg::get_reg_high(uint8_t addr) {
     if (addr > 32){
         std::cout << "Reg: invalid register address" << std::endl;
+        std::runtime_error("Reg: invalid address of register");
         return 0;
     }
     uint16_t res = regs[addr] >> 16;
@@ -31,6 +33,7 @@ uint16_t reg::get_reg_high(uint8_t addr) {
 uint16_t reg::get_reg_low(uint8_t addr) {
     if (addr > 32){
         std::cout << "Reg: invalid register address" << std::endl;
+        std::runtime_error("Reg: invalid address of register");
         return 0;
     }
     uint32_t res = regs[addr] & 0x0000ffff;
@@ -40,10 +43,11 @@ uint16_t reg::get_reg_low(uint8_t addr) {
 void reg::set_reg(uint8_t addr, uint32_t val) {
     if (addr > 32){
         std::cout << "Reg: invalid register address" << std::endl;
+        std::runtime_error("Reg: invalid address of register");
         return;
     }
     if (addr == 0){
-        std::cout << "Reg: cannot set x0" << std::endl;
+        std::cout << "Reg Warning: you are trying to set x0" << std::endl;
         return;
     }
     regs[addr] = val;
@@ -52,10 +56,11 @@ void reg::set_reg(uint8_t addr, uint32_t val) {
 void reg::set_reg_high(uint8_t addr, uint16_t val) {
     if (addr > 32){
         std::cout << "Reg: invalid register address" << std::endl;
+        std::runtime_error("Reg: invalid address of register");
         return;
     }
     if (addr == 0){
-        std::cout << "Reg: cannot set x0" << std::endl;
+        std::cout << "Reg Warning: you are trying to set x0" << std::endl;
         return;
     }
     uint32_t mask = val << 16;
@@ -65,10 +70,11 @@ void reg::set_reg_high(uint8_t addr, uint16_t val) {
 void reg::set_reg_low(uint8_t addr, uint16_t val) {
     if (addr > 32){
         std::cout << "Reg: invalid register address" << std::endl;
+        std::runtime_error("Reg: invalid address of register");
         return;
     }
     if (addr == 0){
-        std::cout << "Reg: cannot set x0" << std::endl;
+        std::cout << "Reg Warning: you are trying to set x0" << std::endl;
         return;
     }
     regs[addr] = (regs[addr] & 0xffff0000) + val;

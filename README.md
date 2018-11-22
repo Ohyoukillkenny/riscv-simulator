@@ -42,3 +42,10 @@ Sample of exe.txt:
 =>
 
 Response from our simulator, i.e., change of the states of registers and the values stored in memory.
+
+
+##### Examples
+
+In **code.txt** file, you can find some examples of how assembly code being transformed to binary code under the RISC-V architecture.
+
+Also, I put some comments near these codes.

@@ -16,8 +16,9 @@ const uint8_t R = 0b00110011; // reg data processing, exp. add  rd, rs1, rs2
 const uint8_t S = 0b00100011; // save data,           exp. sw   rs1, rs2, imm
 const uint8_t L = 0b00000011; // load data,           exp. lw   rd,  rs1, imm
 const uint8_t I = 0b00010011; // imm data processing, exp. addi rd, rs1, imm
-const uint8_t B = 0b01100011; // bne                exp. bne  rs1, rs2, imm
-const uint8_t J = 0b01101111; // jump, only JAL       exp. jal  rd, imm
+const uint8_t B = 0b01100011; // bne                  exp. bne  rs1, rs2, imm
+const uint8_t JAL = 0b01101111; // jal,               exp. jal  rd, imm
+const uint8_t JALR= 0b01100111; // jalr,              exp. jalr
 
 class cpu {
     reg *cpu_regs;
@@ -60,6 +61,8 @@ class cpu {
 
     uint32_t get_branch_imm(uint32_t instr);
 
+    uint32_t get_jal_offset(uint32_t instr);
+
     // function for S-type instructions
     void save_word(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
     void save_byte(uint32_t instr, uint16_t imm, uint8_t alu_opcode);
@@ -80,6 +83,11 @@ class cpu {
     void l_type_opcode_process(uint32_t instr);
     // B-type
     void b_type_opcode_process(uint32_t instr);
+    // JAL
+    void jal_opcode_process(uint32_t instr);
+    // JALR
+    void jalr_opcode_process(uint32_t instr);
+
 
     // get pc_val from PC register
     uint32_t get_pc_val();
