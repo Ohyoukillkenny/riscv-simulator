@@ -112,7 +112,7 @@ public:
      */
     void print();
 
-    // methods prepared for the cpu-test in test file
+    // methods prepared for the cpu-test in test directory
     void test_instrs(uint32_t *instr_set, int size);
     uint32_t reg_peep(uint8_t addr);
     uint32_t mem_peep(uint32_t addr);

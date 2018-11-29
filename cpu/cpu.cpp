@@ -10,7 +10,6 @@ cpu::cpu() {
     cpu_regs -> set_reg(cpu_regs -> PC, 0);
 }
 
-
 cpu::cpu(uint8_t *code, int n) {
     if (n <= 0){
         std::cout << "CPU: initialization failed." << std::endl <<
@@ -65,7 +64,6 @@ uint8_t cpu::get_opcode(uint32_t instr) {
     ret = (uint8_t) instr & 0x0000007f;
     return ret;
 }
-
 
 uint8_t cpu::get_rd(uint32_t instr) {
     uint32_t ret;
@@ -201,6 +199,7 @@ void cpu::save_word(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
     uint32_t mem_address = cpu_alu -> calculate(base_address, imm, alu_opcode);
     cpu_sram -> set_mem(mem_address, src_val);
 }
+
 void cpu::save_byte(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
     uint8_t src_reg = get_rs2(instr);
     uint8_t base_reg = get_rs1(instr);
@@ -210,6 +209,7 @@ void cpu::save_byte(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
     uint32_t mem_address = cpu_alu -> calculate(base_address, imm, alu_opcode);
     cpu_sram -> set_mem(mem_address, src_byte_val);
 }
+
 void cpu::save_hex(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
     uint8_t src_reg = get_rs2(instr);
     uint8_t base_reg = get_rs1(instr);
@@ -219,7 +219,6 @@ void cpu::save_hex(uint32_t instr, uint16_t imm, uint8_t alu_opcode){
     uint32_t mem_address = cpu_alu -> calculate(base_address, imm, alu_opcode);
     cpu_sram -> set_mem(mem_address, src_hex_val);
 }
-
 
 void cpu::s_type_opcode_process(uint32_t instr){
     uint8_t imm11to5 = get_funct7(instr); // 7 bits
@@ -424,7 +423,6 @@ void cpu::check_whether_end(){
     }
 }
 
-
 void cpu::process_instr(uint32_t instr) {
     uint8_t opcode = get_opcode(instr);
     switch (opcode){
@@ -508,7 +506,6 @@ void cpu::print() {
         }
     }
 }
-
 
 void cpu::test_instrs(uint32_t *instr_set, int size) {
     for (int i = 0; i < size; ++i) {

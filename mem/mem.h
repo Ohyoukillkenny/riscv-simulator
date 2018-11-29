@@ -17,13 +17,9 @@ public:
     mem();
 
     uint32_t get_mem(uint32_t addr);
-    uint16_t get_mem_high(uint32_t addr);
-    uint16_t get_mem_low(uint32_t addr);
     uint8_t get_mem_byte(uint32_t addr);
 
     void set_mem(uint32_t addr, uint32_t val);
-    void set_mem_high(uint32_t addr, uint16_t val);
-    void set_mem_low(uint32_t addr, uint16_t val);
 
 };
 
