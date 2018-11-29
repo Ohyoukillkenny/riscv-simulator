@@ -1,10 +1,12 @@
-#### RISC-V Simulator
+### RISC-V Simulator
 
-##### Materials:
+#### Introduction
 
-RISC-V Instruction Manual: https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
+This is an implementation of the RISC-V simulator, finished as an team project for COMP 554 at Rice University. The RISC-V Instruction Manual is located at:  https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
 
-Teacher's slides: from slides 9 to 11
+In this project, we mainly focused on **RV32I Base Integer Instruction Set**, and we use a table to specify the features of RISC-V instruction set we have implemented as below:
+
+
 
 ##### Configuration:
 
