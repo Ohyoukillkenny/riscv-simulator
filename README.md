@@ -64,7 +64,7 @@ PC has value : 0xb00000000000000000000000000011000
 
 ## Details about Implemented Instructions
 
-In this project, we mainly focused on **RV32I Base Integer Instruction Set**, and we use a table to specify the features in RV32I instruction set with their implementing status as below:
+In this project, we mainly focused on **RV32I Base Integer Instruction Set**, and we used a table to specify the features in RV32I instruction set with their implementing status as below:
 
 | Symbol  | Format                | Description                        | STATUS      |
 | ------- | --------------------- | ---------------------------------- | ----------- |
