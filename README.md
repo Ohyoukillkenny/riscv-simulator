@@ -1,12 +1,12 @@
-### RISC-V Simulator
+# RISC-V Simulator
 
-#### Introduction
+## Introduction
 
-This is an implementation of the RISC-V simulator, finished as an term project for COMP 554 at Rice University. The RISC-V Instruction Manual is located at:  https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
+This is an implementation of the RISC-V simulator, finished as a term project for COMP 554 at Rice University. The RISC-V Instruction Manual is located at:  https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
 
-In general, the idea of this project is to simulate a CPU under RISC-V architecture and then help people to understand how a CPU processes the instructions from RISC-V Instruction set. Also, this project is a good practice for us to get familiar with RISC-V instruction set and learn more about how CPU works in modern computers.
+In general, the idea of this project is to simulate a CPU under RISC-V architecture and then help people to understand how a CPU processes the instructions from RISC-V Instruction set. Also, this project is a good practice for us to get familiar with the RISC-V instruction set and learn more about how CPU works in modern computers.
 
-#### How to Work
+## How to Work
 
 In our project, **first of all, we put some 01 instructions in a txt file**, exp., *exe.txt* with below manners:
 
@@ -23,7 +23,7 @@ Then, **we used a program, *main.cpp* in this project, to read the binary-like i
 
 After that, in  *main.cpp*, **we call the simulated CPU to run in response to these instructions**. Our simulated CPU will use a PC register to fetch the instructions and process the instruction under the RISC-V architecture. Basically, the simulated CPU will modify values of its registers and might change values in the memory.
 
-We provided a method in CPU class called **print()** which could print the current status of our simulated CPU, here is the sample about printed status of the simulated CPU after processing the instruction examples in *exe.txt*:
+We provided a method in CPU class called **print()** which could print the current status of our simulated CPU, here is the sample about the printed status of the simulated CPU after processing the instruction examples in *exe.txt*:
 
 ```
 == The state of the CPU ==
@@ -62,7 +62,7 @@ x31 : 0
 PC has value : 0xb00000000000000000000000000011000
 ```
 
-#### Details about Implemented Instructions
+## Details about Implemented Instructions
 
 In this project, we mainly focused on **RV32I Base Integer Instruction Set**, and we use a table to specify the features in RV32I instruction set with their implementing status as below:
 
@@ -108,22 +108,22 @@ In this project, we mainly focused on **RV32I Base Integer Instruction Set**, an
 | FENCE   | `FENCE pred,succ`     | Fence                              | Miss        |
 | FENCE.I | `FENCE.I`             | Fence Instruction                  | Miss        |
 
-#### Usage
+## Usage
 
-##### Environment Configuration:
+### Environment Configuration:
 
-We written this project in C++, and the compiling is handled by CMake. The required version of CMake is 3.10+, because it used the Google Test feature to specify the tests. The only dependency of the project is google test framework. You can find details about Google Test in <https://github.com/google/googletest>.
+We wrote this project in C++, and the compiling is handled by CMake. The required version of CMake is 3.10+, because it used the Google Test feature to specify the tests. The only dependency of the project is google test framework. You can find details about Google Test in <https://github.com/google/googletest>.
 
-However, if you are not familiar with C++, here is the tutorial about how to configure the environment of this project from the scratch.
+However, if you are not familiar with C++, here is the tutorial about how to configure the environment of this project from scratch.
 
 1. Install the CMake. link: https://cmake.org/download/
 2. Install the GTest.
    1. link for windows: https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Windows
-   2. link for linux: https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Windows
+   2. link for Linux: https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Windows
    3. link for mac:  https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Mac
 3. Also, we highly recommend you to use the IDE for C++ called Clion, which can be found in https://www.jetbrains.com/clion. You can register by your student email to get free trials.
 
-##### Directory Structure
+### Directory Structure
 
 Here, the directories in this project were printed in a tree structure.
 
@@ -153,13 +153,13 @@ The **cpu** directory contains the code of the CPU.
 
 The **mem** directory contains the code of the Memory.
 
-The **test** directory contains the tests we written for our simulator, and you get some insight about how the whole simulator works by checking the code in *test-cpu.cpp*.
+The **test** directory contains the tests we wrote for our simulator, and you get some insight about how the whole simulator works by checking the code in *test-cpu.cpp*.
 
 The **main.cpp** file contains code for starting the simulation.
 
 The **exe.txt** file contains the instructions we want to run on our simulated CPU. We wrote a simple example in this file.
 
-##### Compiling
+### Compiling
 
 **Remarks:** 
 
@@ -179,14 +179,14 @@ Then, I set the value of **\*inst_file_name** to be the above string.
    make
    ```
 
-   After that, you shall find two executable files named as **TestAll** and **risc-simulator**. The former one is used to test whether the CPU is correctly functioning, and the latter one is used to process the instructions in *exe.txt* file.
+   After that, you shall find two executable files named as **TestAll** and **risc-simulator**. The former one is used to test whether the CPU is correctly functioning, and the latter one is used to process the instructions in the *exe.txt* file.
 
 
 2. By Clion:
 
    Start Clion, import this project. That's it!
 
-##### Run the Code
+### Run the Code
 
 First of all, let us do the testing. 
 
@@ -220,7 +220,7 @@ Then, let us run risc-simulator.
 
    Select the target to be risc-simulator and then click the green run button.
 
-Then, you shall get similar result as we discussed in the session of **How to Work**, if you use our sample exe.txt.
+Then, you shall get a similar result as we discussed in the session of **How to Work** if you use our sample exe.txt.
 
 If everything went smoothly, it is the time to test your own instruction codes!
 
