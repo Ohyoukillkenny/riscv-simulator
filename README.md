@@ -220,11 +220,11 @@ Then, let us run risc-simulator.
 
    Select the target to be risc-simulator and then click the green run button.
 
-Then, you shall get a similar result as we discussed in the session of **How to Work** if you use our sample exe.txt.
+Then, you shall get a similar result like the printed CPU status in the session of **How to Work** if you use our sample *exe.txt*.
 
-If everything went smoothly, it is the time to test your own instruction codes!
+If everything goes smoothly, it is the time to test your own instruction codes!
 
-If you want to see the CPU status after processing each instruction, modify the `instance -> run();` in *main.cpp* to be `instance -> run_debug();`.
+By the way, if you want to see the CPU status after processing each instruction, modify the `instance -> run();` in *main.cpp* to be `instance -> run_debug();`.
 
 Have fun with this toy simulator!
 
