@@ -6,7 +6,7 @@ This is an implementation of the RISC-V simulator, finished as a term project fo
 
 In general, the idea of this project is to simulate a CPU under RISC-V architecture and then help people to understand how a CPU processes the instructions from RISC-V Instruction set. Also, this project is a good practice for us to get familiar with the RISC-V instruction set and learn more about how CPU works in modern computers.
 
-## How to Work
+## How Does it Work
 
 In our project, **first of all, we put some 01 instructions in a txt file**, exp., *exe.txt* as below:
 
@@ -220,7 +220,9 @@ Then, let us run risc-simulator.
 
    Select the target to be risc-simulator and then click the green run button.
 
-Then, you shall get a similar result like the printed CPU status in the session of **How to Work** if you use our sample *exe.txt*.
+Then, you shall get a similar result like the printed CPU status in the session of **How Does it Work** if you use our sample *exe.txt*.
+
+## Enjoy Yourself
 
 If everything goes smoothly, it is the time to test your own instruction codes!
 
