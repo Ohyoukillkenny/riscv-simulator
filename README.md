@@ -8,7 +8,7 @@ In general, the idea of this project is to simulate a CPU under RISC-V architect
 
 ## How to Work
 
-In our project, **first of all, we put some 01 instructions in a txt file**, exp., *exe.txt* with below manners:
+In our project, **first of all, we put some 01 instructions in a txt file**, exp., *exe.txt* as below:
 
 ```
 00000000100000000000001100010011 // ADDI imm=8, rs1=x0  rd=x6
