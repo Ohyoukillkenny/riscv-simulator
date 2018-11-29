@@ -142,16 +142,6 @@ The **exe.txt** file contains the instructions we want to run on our simulated C
 
 ### Compiling
 
-**Remarks:** 
-
-Before compelling, change the **\*inst_file_name** in **main.cpp** corresponding to the path of your exe.txt file. For example, as I saved my exe.txt file in 
-
-```
-/Users/klk/CLionProjects/riscv-simulator/exe.txt
-```
-
-Then, I set the value of **\*inst_file_name** to be the above string.
-
 1. By command line:
 
    ```
@@ -193,21 +183,44 @@ Then, let us run risc-simulator.
 
 1. By command line:
 
+   The usage of *risc-simulator* can be viewed as below:
+
    ```
-   ./risc-simulator 
+   Usage:        risc-simulator [-p] CODE_FILE
+   -----------------------------------------------------
+   [-h|--help] - show usage of risc-simulator
+   [-p]        - print CPU status after each instruction
+   CODE_FILE   - path of the instruction file
+   -----------------------------------------------------
    ```
+   Here is an example we run instructions in *exe.txt* in PrintAll mode:
+
+   ```
+   ./risc-simulator -p /Users/klk/CLionProjects/riscv-simulator/exe.txt
+   ```
+
+   You can also find the usage by putting `./risc-simulator -h` into your command line terminals.
 
 2. By Clion:
 
-   Select the target to be risc-simulator and then click the green run button.
+   Select the target to be risc-simulator, edit the configuration of risc-simulator to add program arguments  like `-h`, `CODE_FILE`, `-p CODE_FILE` or etc., and then click the green run button.
 
-Then, you shall get a similar result like the printed CPU status in the session of **How Does it Work** if you use our sample *exe.txt*.
+Then, you shall get a similar final CPU status like the printed status in the session of **How Does it Work** if you use our sample *exe.txt*.
 
 ## Enjoy Yourself
 
 If everything goes smoothly, it is the time to test your own instruction codes!
 
-By the way, if you want to see the CPU status after processing each instruction, modify the `instance -> run();` in *main.cpp* to be `instance -> run_debug();`.
+By the way, if you want to see the memory status, you can use the method from cpu class called `mem_peep()`. It takes the address of the memory as the argument. Here is a detailed example for that:
+
+```c++
+// create a new cpu
+cpu *instance = new cpu(code_region, num);
+// let cpu process the instructions
+instance -> run();
+// peep the value in memory at address 0x00000001
+instance -> mem_peep(0x00000001);
+```
 
 Have fun with this toy simulator!
 

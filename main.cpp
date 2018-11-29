@@ -10,19 +10,22 @@ int main(int argc, char *argv[]) {
 
     // are the parameters provided if not print help
     if (argc != 2 && argc != 3) {
-        std::cout << "Usage: riscv-simulator [-p] CODE_FILE" << std::endl;
-        std::cout << std::endl;
-        std::cout << "[-p]      - print CPU status after processing each instruction" << std::endl;
-        std::cout << "CODE_FILE - path of the instruction file" << std::endl;
+        std::cout << "Usage:        risc-simulator [-p] CODE_FILE" << std::endl;
+        std::cout << "-----------------------------------------------------" << std::endl;
+        std::cout << "[-h|--help] - show usage of risc-simulator" << std::endl;
+        std::cout << "[-p]        - print CPU status after each instruction" << std::endl;
+        std::cout << "CODE_FILE   - path of the instruction file" << std::endl;
+        std::cout << "-----------------------------------------------------" << std::endl;
         return 0;
     }
 
     if(argc == 2 && (std::string(argv[1]) == "-h" || std::string(argv[1]) == "--help")) {
-        std::cout << "Usage:      riscv-simulator [-p] CODE_FILE" << std::endl;
-        std::cout << "--------------------------------------------------" << std::endl;
-        std::cout << "[-p]      - print CPU status after each instruction" << std::endl;
-        std::cout << "CODE_FILE - path of the instruction file" << std::endl;
-        std::cout << "--------------------------------------------------" << std::endl;
+        std::cout << "Usage:        risc-simulator [-p] CODE_FILE" << std::endl;
+        std::cout << "-----------------------------------------------------" << std::endl;
+        std::cout << "[-h|--help] - show usage of risc-simulator" << std::endl;
+        std::cout << "[-p]        - print CPU status after each instruction" << std::endl;
+        std::cout << "CODE_FILE   - path of the instruction file" << std::endl;
+        std::cout << "-----------------------------------------------------" << std::endl;
         return 0;
     }
 
