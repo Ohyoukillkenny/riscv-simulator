@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/risc-translator.dir/translator/trans_main.cpp.o CMakeFiles/risc-translator.dir/translator/translator.cpp.o  -o risc-translator 

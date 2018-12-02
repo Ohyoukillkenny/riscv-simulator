@@ -19,6 +19,10 @@ CMakeFiles/risc-simulator.dir/main.cpp.o
  /Users/klk/CLionProjects/riscv-simulator/cpu/reg.h
  /Users/klk/CLionProjects/riscv-simulator/main.cpp
  /Users/klk/CLionProjects/riscv-simulator/mem/mem.h
+ /Users/klk/CLionProjects/riscv-simulator/translator/translator.h
 CMakeFiles/risc-simulator.dir/mem/mem.cpp.o
  /Users/klk/CLionProjects/riscv-simulator/mem/mem.cpp
  /Users/klk/CLionProjects/riscv-simulator/mem/mem.h
+CMakeFiles/risc-simulator.dir/translator/translator.cpp.o
+ /Users/klk/CLionProjects/riscv-simulator/translator/translator.cpp
+ /Users/klk/CLionProjects/riscv-simulator/translator/translator.h

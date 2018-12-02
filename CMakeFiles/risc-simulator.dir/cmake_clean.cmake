@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/risc-simulator.dir/cpu/reg.cpp.o"
   "CMakeFiles/risc-simulator.dir/cpu/cpu.cpp.o"
   "CMakeFiles/risc-simulator.dir/mem/mem.cpp.o"
+  "CMakeFiles/risc-simulator.dir/translator/translator.cpp.o"
   "risc-simulator.pdb"
   "risc-simulator"
 )

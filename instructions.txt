@@ -1,0 +1,37 @@
+beq x0,x1,1
+bne x2,x3,2
+blt x4,x5,3
+bge x6,x7,4
+bltu x8,x9,5
+bgeu x10,x11,6
+LB x12,7(x13)
+Lh x14,8(x15)
+lw x16,9(x17)
+lbu x18,10(x19)
+lhu x20,11(x21)
+sb x22,12(x23)
+sh x24,13(x25)
+sw x26,14(x27)
+andi x28,x29,15
+slli x30,x31,16
+srli x0,x1,17
+srai x2,x3,18
+add x4,x5,x6
+sub x7,x8,x9
+sll x10,x11,x12
+slt x13,x14,x15
+sltu x16,x17,x18
+xor x19,x20,x21
+srl x22,x23,x24
+sra x25,x26,x27
+or x28,x29,x30
+and x31,x0,x1
+addi x2,x3,29
+slti x4,x5,30
+sltiu x6,x7,31
+xori x8,x9,32
+ori x10,x11,33
+jal x12,34
+jalr x13,x14,35
+
+

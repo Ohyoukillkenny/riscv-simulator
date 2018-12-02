@@ -1,4 +1,5 @@
 /Users/klk/CLionProjects/riscv-simulator/CMakeFiles/rebuild_cache.dir
 /Users/klk/CLionProjects/riscv-simulator/CMakeFiles/edit_cache.dir
 /Users/klk/CLionProjects/riscv-simulator/CMakeFiles/TestAll.dir
+/Users/klk/CLionProjects/riscv-simulator/CMakeFiles/risc-translator.dir
 /Users/klk/CLionProjects/riscv-simulator/CMakeFiles/risc-simulator.dir

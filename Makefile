@@ -124,6 +124,19 @@ TestAll/fast:
 .PHONY : TestAll/fast
 
 #=============================================================================
+# Target rules for targets named risc-translator
+
+# Build rule for target.
+risc-translator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 risc-translator
+.PHONY : risc-translator
+
+# fast build rule for target.
+risc-translator/fast:
+	$(MAKE) -f CMakeFiles/risc-translator.dir/build.make CMakeFiles/risc-translator.dir/build
+.PHONY : risc-translator/fast
+
+#=============================================================================
 # Target rules for targets named risc-simulator
 
 # Build rule for target.
@@ -337,6 +350,66 @@ test/test-cpu.cpp.s:
 	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/test/test-cpu.cpp.s
 .PHONY : test/test-cpu.cpp.s
 
+translator/trans_main.o: translator/trans_main.cpp.o
+
+.PHONY : translator/trans_main.o
+
+# target to build an object file
+translator/trans_main.cpp.o:
+	$(MAKE) -f CMakeFiles/risc-translator.dir/build.make CMakeFiles/risc-translator.dir/translator/trans_main.cpp.o
+.PHONY : translator/trans_main.cpp.o
+
+translator/trans_main.i: translator/trans_main.cpp.i
+
+.PHONY : translator/trans_main.i
+
+# target to preprocess a source file
+translator/trans_main.cpp.i:
+	$(MAKE) -f CMakeFiles/risc-translator.dir/build.make CMakeFiles/risc-translator.dir/translator/trans_main.cpp.i
+.PHONY : translator/trans_main.cpp.i
+
+translator/trans_main.s: translator/trans_main.cpp.s
+
+.PHONY : translator/trans_main.s
+
+# target to generate assembly for a file
+translator/trans_main.cpp.s:
+	$(MAKE) -f CMakeFiles/risc-translator.dir/build.make CMakeFiles/risc-translator.dir/translator/trans_main.cpp.s
+.PHONY : translator/trans_main.cpp.s
+
+translator/translator.o: translator/translator.cpp.o
+
+.PHONY : translator/translator.o
+
+# target to build an object file
+translator/translator.cpp.o:
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/translator/translator.cpp.o
+	$(MAKE) -f CMakeFiles/risc-translator.dir/build.make CMakeFiles/risc-translator.dir/translator/translator.cpp.o
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/translator/translator.cpp.o
+.PHONY : translator/translator.cpp.o
+
+translator/translator.i: translator/translator.cpp.i
+
+.PHONY : translator/translator.i
+
+# target to preprocess a source file
+translator/translator.cpp.i:
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/translator/translator.cpp.i
+	$(MAKE) -f CMakeFiles/risc-translator.dir/build.make CMakeFiles/risc-translator.dir/translator/translator.cpp.i
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/translator/translator.cpp.i
+.PHONY : translator/translator.cpp.i
+
+translator/translator.s: translator/translator.cpp.s
+
+.PHONY : translator/translator.s
+
+# target to generate assembly for a file
+translator/translator.cpp.s:
+	$(MAKE) -f CMakeFiles/TestAll.dir/build.make CMakeFiles/TestAll.dir/translator/translator.cpp.s
+	$(MAKE) -f CMakeFiles/risc-translator.dir/build.make CMakeFiles/risc-translator.dir/translator/translator.cpp.s
+	$(MAKE) -f CMakeFiles/risc-simulator.dir/build.make CMakeFiles/risc-simulator.dir/translator/translator.cpp.s
+.PHONY : translator/translator.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -346,6 +419,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... TestAll"
+	@echo "... risc-translator"
 	@echo "... risc-simulator"
 	@echo "... cpu/alu.o"
 	@echo "... cpu/alu.i"
@@ -368,6 +442,12 @@ help:
 	@echo "... test/test-cpu.o"
 	@echo "... test/test-cpu.i"
 	@echo "... test/test-cpu.s"
+	@echo "... translator/trans_main.o"
+	@echo "... translator/trans_main.i"
+	@echo "... translator/trans_main.s"
+	@echo "... translator/translator.o"
+	@echo "... translator/translator.i"
+	@echo "... translator/translator.s"
 .PHONY : help
 
 

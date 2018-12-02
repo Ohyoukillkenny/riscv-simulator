@@ -25,3 +25,6 @@ CMakeFiles/TestAll.dir/test/test-cpu.cpp.o: cpu/reg.h
 CMakeFiles/TestAll.dir/test/test-cpu.cpp.o: mem/mem.h
 CMakeFiles/TestAll.dir/test/test-cpu.cpp.o: test/test-cpu.cpp
 
+CMakeFiles/TestAll.dir/translator/translator.cpp.o: translator/translator.cpp
+CMakeFiles/TestAll.dir/translator/translator.cpp.o: translator/translator.h
+

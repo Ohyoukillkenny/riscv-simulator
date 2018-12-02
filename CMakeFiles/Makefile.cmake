@@ -21,6 +21,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "mem/mem.h"
   "test/test-alu.cpp"
   "test/test-cpu.cpp"
+  "translator/translator.cpp"
+  "translator/translator.h"
   "/usr/local/Cellar/cmake/3.12.4/share/cmake/Modules/CMakeCInformation.cmake"
   "/usr/local/Cellar/cmake/3.12.4/share/cmake/Modules/CMakeCXXInformation.cmake"
   "/usr/local/Cellar/cmake/3.12.4/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
@@ -69,5 +71,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/TestAll.dir/DependInfo.cmake"
+  "CMakeFiles/risc-translator.dir/DependInfo.cmake"
   "CMakeFiles/risc-simulator.dir/DependInfo.cmake"
   )

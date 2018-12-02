@@ -145,6 +145,7 @@ The **exe.txt** file contains the instructions we want to run on our simulated C
 1. By command line:
 
    ```
+   git clone https://github.com/Ohyoukillkenny/riscv-simulator.git
    cd riscv-simulator
    cmake .
    make
@@ -155,7 +156,7 @@ The **exe.txt** file contains the instructions we want to run on our simulated C
 
 2. By Clion:
 
-   Start Clion, import this project. That's it!
+   Download our project from Github. Start Clion, import this project. That's it!
 
 ### Run the Code
 

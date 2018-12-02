@@ -18,7 +18,11 @@ CMakeFiles/risc-simulator.dir/main.cpp.o: cpu/cpu.h
 CMakeFiles/risc-simulator.dir/main.cpp.o: cpu/reg.h
 CMakeFiles/risc-simulator.dir/main.cpp.o: main.cpp
 CMakeFiles/risc-simulator.dir/main.cpp.o: mem/mem.h
+CMakeFiles/risc-simulator.dir/main.cpp.o: translator/translator.h
 
 CMakeFiles/risc-simulator.dir/mem/mem.cpp.o: mem/mem.cpp
 CMakeFiles/risc-simulator.dir/mem/mem.cpp.o: mem/mem.h
+
+CMakeFiles/risc-simulator.dir/translator/translator.cpp.o: translator/translator.cpp
+CMakeFiles/risc-simulator.dir/translator/translator.cpp.o: translator/translator.h
 

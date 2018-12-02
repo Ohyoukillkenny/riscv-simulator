@@ -177,10 +177,12 @@ void cpu::i_type_opcode_process(uint32_t instr) {
 
     switch (alu_opcode){
         case 0b0000001:
+            // SLLI
             in2 = get_shamt(instr);
             break;
         case 0b0000101:
             in2 = get_shamt(instr);
+            // SRLI and SRAI
             alu_opcode = combine_30_func3(instr);
             break;
         default:

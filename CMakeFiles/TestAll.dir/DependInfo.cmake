@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/klk/CLionProjects/riscv-simulator/mem/mem.cpp" "/Users/klk/CLionProjects/riscv-simulator/CMakeFiles/TestAll.dir/mem/mem.cpp.o"
   "/Users/klk/CLionProjects/riscv-simulator/test/test-alu.cpp" "/Users/klk/CLionProjects/riscv-simulator/CMakeFiles/TestAll.dir/test/test-alu.cpp.o"
   "/Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp" "/Users/klk/CLionProjects/riscv-simulator/CMakeFiles/TestAll.dir/test/test-cpu.cpp.o"
+  "/Users/klk/CLionProjects/riscv-simulator/translator/translator.cpp" "/Users/klk/CLionProjects/riscv-simulator/CMakeFiles/TestAll.dir/translator/translator.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

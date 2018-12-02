@@ -25,3 +25,6 @@ CMakeFiles/TestAll.dir/test/test-cpu.cpp.o
  /Users/klk/CLionProjects/riscv-simulator/cpu/reg.h
  /Users/klk/CLionProjects/riscv-simulator/mem/mem.h
  /Users/klk/CLionProjects/riscv-simulator/test/test-cpu.cpp
+CMakeFiles/TestAll.dir/translator/translator.cpp.o
+ /Users/klk/CLionProjects/riscv-simulator/translator/translator.cpp
+ /Users/klk/CLionProjects/riscv-simulator/translator/translator.h

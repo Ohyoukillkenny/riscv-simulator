@@ -39,10 +39,32 @@ queue
 -
 cpu/cpu.h
 /Users/klk/CLionProjects/riscv-simulator/cpu/cpu.h
+translator/translator.h
+/Users/klk/CLionProjects/riscv-simulator/translator/translator.h
 
 /Users/klk/CLionProjects/riscv-simulator/mem/mem.h
 cstdint
 -
 vector
+-
+
+/Users/klk/CLionProjects/riscv-simulator/translator/translator.cpp
+iostream
+-
+vector
+-
+map
+-
+string
+-
+fstream
+-
+algorithm
+-
+translator.h
+/Users/klk/CLionProjects/riscv-simulator/translator/translator.h
+
+/Users/klk/CLionProjects/riscv-simulator/translator/translator.h
+string
 -
 

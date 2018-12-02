@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/TestAll.dir/cpu/reg.cpp.o"
   "CMakeFiles/TestAll.dir/cpu/cpu.cpp.o"
   "CMakeFiles/TestAll.dir/mem/mem.cpp.o"
+  "CMakeFiles/TestAll.dir/translator/translator.cpp.o"
   "CMakeFiles/TestAll.dir/test/test-cpu.cpp.o"
   "TestAll.pdb"
   "TestAll"
