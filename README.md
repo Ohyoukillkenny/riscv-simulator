@@ -4,37 +4,82 @@
 
 This is an implementation of the RISC-V simulator, finished as a term project for COMP 554 at Rice University. The RISC-V Instruction Manual is located at:  https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf
 
-In general, the idea of this project is to simulate a CPU under RISC-V architecture and then help people to understand how a CPU processes the instructions from RISC-V Instruction set. Also, this project is a good practice for us to get familiar with the RISC-V instruction set and learn more about how CPU works in modern computers.
+RISC-V is a new instruction set architecture (ISA) that was originally designed to support computer architecture research and education, but which also has the potential to become a standard free and open architecture for industry implementations. 
+As the RISC-V had become more and more popular, in this project, we simulated a CPU under RISC-V architecture which could process the binary instructions from RISC-V Instruction set. Also, we implemented a translator to translate RISC-V assembly codes to binary instructions. Thus, in simulation, people could also directly feed our simulator with RISC-V assembly codes whose writing mannual could be viewed in the **Details about Implemented Instructions**.
+
+The tutorial of this project is presented in the **Tutorial**, including the installation and the usage of RISC-V Simulator.
 
 ## How Does it Work
 
-In our project, **first of all, we put some 01 instructions in a txt file**, exp., *exe.txt* as below:
+### Instruction Feeding
+
+This project provides a simple RISC-V assembly translator which compiles assembly code to binary codes, then, the simulated CPU can process the binary instructions according to RISC-V ISA. Here, we presented an example to illustrate how to feed our CPU with instructions. First of all, we gave the pseudo-code of the program that will be fed to CPU:
 
 ```
-00000000100000000000001100010011 // ADDI imm=8, rs1=x0  rd=x6
-00000000000100000000001010010011 // ADDI imm=1, rs1=x0  rd=x5
-00000000000100101000001010010011 // ADDI imm=1, rs1=x5  rd=x5
-00000000011000101000010001100011 // BEQ  offset=8, rs2=x6, rs1=x5
-11111111000100110000000011100111 // JALR imm=-16, rs1=x6, rd=x1
-00000000000100101000001010010011 // ADDI imm=1, rs1=x5  rd=x5
+a = 0;
+b = 20; 
+a = a + 1;
+if a < b, branching back to a = a + 1;
+store a to memory[0x00000000];
+load memory[0x00000000] to c;
 ```
 
-Then, **we used a program, *main.cpp* in this project, to read the binary-like instructions into instruction memory**. To be noticed, the comments of the 01 string will not be loaded, and the details about instruction loading could be found in *main.cpp*.
+Basically, what we wrote was a loop in which we increased the value of variable `a` until it was greater or equal than the value of `b`. After the loop, we simply saved the value of `a` to the memory at address of `0x00000000` and loaded this value to another variable named as `c`.
 
-After that, in  *main.cpp*, **we call the simulated CPU to run in response to these instructions**. Our simulated CPU will use a PC register to fetch the instructions and process the instruction under the RISC-V architecture. Basically, the simulated CPU will modify values of its registers and might change values in the memory.
+According to the pseudo-code, we gave the RISC-V assembly code in **assem.txt** as below:
 
-We provided a method in CPU class called **print()** which could print the current status of our simulated CPU, here is the sample about the printed status of the simulated CPU after processing the instruction examples in *exe.txt*:
+```
+addi x5, x0, 0
+addi x6, x6, 20
+addi x5, x5, 1
+blt  x5, x6, -4
+sw   x5, 0(x0)
+lw   x7, 0(x0)
+```
+
+Then, by typing `./risc-translate assem.txt exe.txt` on command line terminal, the RISC-V assembly code will be translated to binary strings in the **exe.txt**.
+
+We also gave the codes in **exe.txt** as below:
+
+```
+00000000000000000000001010010011
+00000001010000110000001100010011
+00000000000100101000001010010011
+11111110011000101100111011100011
+00000000010100000010000000100011
+00000000000000000010001110000011
+```
+
+Then, we used a program, **main.cpp** in this project, to read the binary-like instructions into instruction memory. 
+
+To be noticed, this project provided `./risc-simulator -a assem.txt` to feed the CPU directly with RISC-V assembly codes, and our project also supported feeding the CPU with binary strings with `./risc-simulator exe.txt`, and the details about instruction feeding could be found in **main.cpp**.
+
+### Instruction Processing
+
+After the 0-1 strings from the text file was loaded into the program as binary instructions, our simulated CPU would start to process these instructions.
+
+First of all, our CPU would use its PC register to fetch instructions from the instruction memory, and we used method called `get_pc_val()`in `cpu` class to implement this function of our CPU.
+
+Then, we decoded the fetched instructions according to RISC-V specification. For instance, the CPU would parse the bits from 0 to 7 as opcode to figure out the type of the instruction. Once the type of the operation was determined, the CPU could further decode other components in the instruction, such as immediate number, destination register, and etc.
+
+As the instruction had been decoded, the CPU will start to calculate, i.e., execute the instruction. To be noticed, in our implementation of CPU, we also simulated the ALU by `alu` class. Therefore, you could see that when our CPU executed instructions, it would transmit binary sequences to ALU to finish the calculation, i.e., in our code, `cpu` instance would call methods from `alu` class to do the calculation.
+
+After that, for L-Type and S-Type instructions, CPU will visit the memory to load or save data. In our code, we used the `mem` class to simulate the memory in a computer, and the CPU could call the get and save methods in `mem` class to load or save data. Moreover, for J-Type and B-Type instructions, the value in the PC register would be modified by the executing results, thereby the jumping and branching instructions could be realized. For instructions of other types, after finishing processing an instruction, the value of PC register would automatically plus 4.
+
+### Status Monitoring
+
+We provided `print()` method for CPU to print out the status of each register in the CPU. Here is an example for the printed register status after our simulated CPU processed the instructions from the **assem.txt**.
 
 ```
 == The state of the CPU ==
 x0  : 0
-x1  : 20
+x1  : 0
 x2  : 0
 x3  : 0
 x4  : 0
-x5  : 9
-x6  : 8
-x7  : 0
+x5  : 20
+x6  : 20
+x7  : 20
 x8  : 0
 
 ...
@@ -42,6 +87,8 @@ x8  : 0
 x31 : 0
 PC has value : 0xb00000000000000000000000000011000
 ```
+
+For memory status monitoring, we provided the `mem_peep()` method in `cpu` class. It would consume the memory address as input and return the value at that address as output.
 
 ## Details about Implemented Instructions
 
@@ -89,20 +136,33 @@ In this project, we mainly focused on **RV32I Base Integer Instruction Set**, an
 | FENCE   | `FENCE pred,succ`     | Fence                              | Miss        |
 | FENCE.I | `FENCE.I`             | Fence Instruction                  | Miss        |
 
-## Usage
+## Tutorial
 
 ### Environment Configuration:
 
-We wrote this project in C++, and the compiling is handled by CMake. The required version of CMake is 3.10+, because it used the Google Test feature to specify the tests. The only dependency of the project is google test framework. You can find details about Google Test in <https://github.com/google/googletest>.
+We wrote this project in C++, and the compiling is handled by CMake. The required version of CMake is 3.10+, because it used the Google Test feature to specify the tests. The only dependency of the project is google test framework. You can find details about Google Test in https://github.com/google/googletest.
 
 However, if you are not familiar with C++, here is the tutorial about how to configure the environment of this project from scratch.
 
-1. Install the CMake. link: https://cmake.org/download/
+1. Install the CMake. 
+
+   ​	https://cmake.org/download/
+
 2. Install the GTest.
-   1. link for windows: https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Windows
-   2. link for Linux: https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Windows
-   3. link for mac:  https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Mac
-3. Also, we highly recommend you to use the IDE for C++ called Clion, which can be found in https://www.jetbrains.com/clion. You can register by your student email to get free trials.
+
+   ​	Windows: 
+
+   ​	 https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Windows
+
+   ​	Linux:         
+
+   ​	https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Windows
+
+   ​	Mac:          
+
+   ​	https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Mac
+
+3. Also, we highly recommend you to use the IDE for C++ called Clion, which can be found in https://www.jetbrains.com/clion. It provides free trials for educational usage.
 
 ### Directory Structure
 
@@ -111,6 +171,12 @@ Here, the directories in this project were printed in a tree structure.
 ```
 ├── CMakeLists.txt
 ├── README.md
+├── assem.txt
+├── main.cpp
+├── translator
+│   ├── translator.cpp
+│   ├── translator.h
+│   └── trans_main.h
 ├── cpu
 │   ├── alu.cpp
 │   ├── alu.h
@@ -118,8 +184,6 @@ Here, the directories in this project were printed in a tree structure.
 │   ├── cpu.h
 │   ├── reg.cpp
 │   └── reg.h
-├── exe.txt
-├── main.cpp
 ├── mem
 │   ├── mem.cpp
 │   └── mem.h
@@ -130,15 +194,17 @@ Here, the directories in this project were printed in a tree structure.
 
 The **CMakeLists.txt** contains instructions for CMake compiler.
 
+The **assem.txt** file contains the RISC-V assembly code we want to run on our simulated CPU. We wrote a simple example in this file.
+
+The **main.cpp** file contains code for starting the simulation.
+
+The **translator** directory contains the code of the assembly translator.
+
 The **cpu** directory contains the code of the CPU. 
 
 The **mem** directory contains the code of the Memory.
 
 The **test** directory contains the tests we wrote for our simulator, and you get some insight about how the whole simulator works by checking the code in *test-cpu.cpp*.
-
-The **main.cpp** file contains code for starting the simulation.
-
-The **exe.txt** file contains the instructions we want to run on our simulated CPU. We wrote a simple example in this file.
 
 ### Compiling
 
@@ -151,7 +217,7 @@ The **exe.txt** file contains the instructions we want to run on our simulated C
    make
    ```
 
-   After that, you shall find two executable files named as **TestAll** and **risc-simulator**. The former one is used to test whether the CPU is correctly functioning, and the latter one is used to process the instructions in the *exe.txt* file.
+   After that, you shall find three executable files named as **TestAll**, **risc-translator** and **risc-simulator**. **TestAll** is used to test whether the CPU is correctly functioning. **risc-translator** is leveraged to translate assembly codes to binary instructions. **risc-simulator** is used to process the instructions and simulate the CPU.
 
 
 2. By Clion:
@@ -180,24 +246,25 @@ You shall see something like:
 [  PASSED  ] 18 tests.
 ```
 
-Then, let us run risc-simulator.
+Then, let us run **risc-simulator**.
 
 1. By command line:
 
-   The usage of *risc-simulator* can be viewed as below:
+   The usage can be viewed as below:
 
    ```
-   Usage:        risc-simulator [-p] CODE_FILE
+   Usage:     risc-simulator [-a] [-p]   CODE_FILE
    -----------------------------------------------------
    [-h|--help] - show usage of risc-simulator
+   [-a]        - process the assembly code
    [-p]        - print CPU status after each instruction
-   CODE_FILE   - path of the instruction file
+   CODE_FILE   - path of the assembly|binary code file
    -----------------------------------------------------
    ```
-   Here is an example we run instructions in *exe.txt* in PrintAll mode:
+   Here is an example we run assembly codes in **assem.txt** in PrintAll mode:
 
    ```
-   ./risc-simulator -p /Users/klk/CLionProjects/riscv-simulator/exe.txt
+   ./risc-simulator -ap assem.txt
    ```
 
    You can also find the usage by putting `./risc-simulator -h` into your command line terminals.
@@ -206,13 +273,13 @@ Then, let us run risc-simulator.
 
    Select the target to be risc-simulator, edit the configuration of risc-simulator to add program arguments  like `-h`, `CODE_FILE`, `-p CODE_FILE` or etc., and then click the green run button.
 
-Then, you shall get a similar final CPU status like the printed status in the session of **How Does it Work** if you use our sample *exe.txt*.
+Then, you shall get a similar final CPU status like the printed status in the session of **How Does it Work** if you use our **assem.txt**.
 
 ## Enjoy Yourself
 
 If everything goes smoothly, it is the time to test your own instruction codes!
 
-By the way, if you want to see the memory status, you can use the method from cpu class called `mem_peep()`. It takes the address of the memory as the argument. Here is a detailed example for that:
+By the way, if you want to see the memory status, you can use the method from `cpu` class called `mem_peep()`. It takes the address of the memory as the argument. Here is an example:
 
 ```c++
 // create a new cpu

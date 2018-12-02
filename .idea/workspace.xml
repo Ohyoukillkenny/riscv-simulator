@@ -13,32 +13,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="938023e8-e62f-4f4f-81d4-481f2d051c4e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" afterPath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/CXX.includecache" afterPath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/CXX.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/DependInfo.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/build.make" afterPath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/link.txt" afterPath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/link.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/progress.make" afterPath="$PROJECT_DIR$/CMakeFiles/TestAll.dir/progress.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/CXX.includecache" afterPath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/CXX.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/DependInfo.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/build.make" afterPath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/link.txt" afterPath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/link.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/progress.make" afterPath="$PROJECT_DIR$/CMakeFiles/risc-simulator.dir/progress.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cpu/cpu.cpp" afterPath="$PROJECT_DIR$/cpu/cpu.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/riscv-simulator.cbp" afterPath="$PROJECT_DIR$/riscv-simulator.cbp" />
-    </list>
+    <list default="true" id="938023e8-e62f-4f4f-81d4-481f2d051c4e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -302,12 +277,12 @@
       <workItem from="1543467994027" duration="22000" />
       <workItem from="1543505559667" duration="2254000" />
       <workItem from="1543769932313" duration="2162000" />
-      <workItem from="1543778383206" duration="5855000" />
+      <workItem from="1543778383206" duration="5919000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85129000" />
+    <option name="totallyTimeSpent" value="85193000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
