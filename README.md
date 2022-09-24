@@ -156,7 +156,7 @@ However, if you are not familiar with C++, here is the tutorial about how to con
 
    ​	Linux:         
 
-   ​	https://github.com/iat-cener/tonatiuh/wiki/Installing-Google-Test-For-Windows
+   ​	https://www.eriksmistad.no/getting-started-with-google-test-on-ubuntu/
 
    ​	Mac:          
 

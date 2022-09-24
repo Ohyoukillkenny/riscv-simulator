@@ -7,6 +7,7 @@
 #include "reg.h"
 #include "alu.h"
 #include "../mem/mem.h"
+#include <bitset>
 #ifndef RISCV_SIMULATOR_CPU_H
 #define RISCV_SIMULATOR_CPU_H
 
